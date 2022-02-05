@@ -1,0 +1,45 @@
+
+.section-header {
+  margin-bottom: 20px;
+}
+.section-header .section-title {
+  font-size: 38px;
+  /* color: #272727; */
+  color: white;
+  position: relative;
+  padding-bottom: 20px;
+  margin: 0 0 20px;
+}
+.section-header .section-title:before {
+  content: "";
+  position: absolute;
+  width: 140px;
+  bottom: 0;
+  left: 50%;
+  margin-left: -70px;
+  height: 4px;
+  background: #fb6a33;
+}
+.contact-us {
+  padding: 40px 0 40px;
+  background: #fb6a33;
+  color: #fff;
+}
+.contact-us h1,
+.contact-us h2 {
+  color: #fff;
+}
+/*Contact*/
+ .contact-info{
+ padding:60px 0;
+ }
+.contact-info address {
+margin-bottom: 20px;
+font-style: normal;
+line-height: 27px;
+font-size: 15px;
+}
+.contact-info .form-control { 
+padding: 6px 12px;
+border-radius: 0;
+}

@@ -10,10 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_08_125159) do
+ActiveRecord::Schema.define(version: 2022_02_10_100735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointments", force: :cascade do |t|
+    t.date "apptdate"
+    t.datetime "appttime"
+    t.string "service"
+    t.bigint "salon_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["salon_id"], name: "index_appointments_on_salon_id"
+    t.index ["user_id"], name: "index_appointments_on_user_id"
+  end
+
+  create_table "salons", force: :cascade do |t|
+    t.string "name"
+    t.string "address1"
+    t.string "address2"
+    t.integer "pincode"
+    t.string "city"
+    t.string "landline"
+    t.integer "mobile"
+    t.string "gstin"
+    t.string "pan"
+    t.integer "chairs"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_salons_on_user_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "stype"
+    t.integer "sduration"
+    t.integer "sprice"
+    t.bigint "salon_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["salon_id"], name: "index_services_on_salon_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -35,4 +74,19 @@ ActiveRecord::Schema.define(version: 2022_02_08_125159) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "worktimes", force: :cascade do |t|
+    t.integer "weekday"
+    t.datetime "opens"
+    t.datetime "closes"
+    t.bigint "salon_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["salon_id"], name: "index_worktimes_on_salon_id"
+  end
+
+  add_foreign_key "appointments", "salons"
+  add_foreign_key "appointments", "users"
+  add_foreign_key "salons", "users"
+  add_foreign_key "services", "salons"
+  add_foreign_key "worktimes", "salons"
 end

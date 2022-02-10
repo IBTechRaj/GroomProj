@@ -392,6 +392,61 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
                 setPasswordConfirmation(event.target.value)
               }}
             />
+            First Name
+            <input
+              className="form-control"
+              placeholder="password confirmation"
+              type="password"
+              name="passwordConfirmation"
+              value={passwordConfirmation}
+              onChange={event => {
+                setPasswordConfirmation(event.target.value)
+              }}
+            />
+            Last Name
+            <input
+              className="form-control"
+              placeholder="password confirmation"
+              type="password"
+              name="passwordConfirmation"
+              value={passwordConfirmation}
+              onChange={event => {
+                setPasswordConfirmation(event.target.value)
+              }}
+            />
+            Gender
+            <input
+              className="form-control"
+              placeholder="password confirmation"
+              type="password"
+              name="passwordConfirmation"
+              value={passwordConfirmation}
+              onChange={event => {
+                setPasswordConfirmation(event.target.value)
+              }}
+            />
+            Date of Birth
+            <input
+              className="form-control"
+              placeholder="password confirmation"
+              type="password"
+              name="passwordConfirmation"
+              value={passwordConfirmation}
+              onChange={event => {
+                setPasswordConfirmation(event.target.value)
+              }}
+            />
+            Mobile
+            <input
+              className="form-control"
+              placeholder="password confirmation"
+              type="password"
+              name="passwordConfirmation"
+              value={passwordConfirmation}
+              onChange={event => {
+                setPasswordConfirmation(event.target.value)
+              }}
+            />
           </label>
 
           <label className="justify-left w-100 px-5">

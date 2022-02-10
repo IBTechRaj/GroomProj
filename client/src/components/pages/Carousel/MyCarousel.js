@@ -20,6 +20,8 @@ class MyCarousel extends Component {
           <p className="legend" style={{ fontSize: 30, color: '#fb6a33' }}>Your Satisfaction is our Motto</p>
         </div>
         {/* <div>
+        Photo by <a href="https://unsplash.com/@bayleejadegramling?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Baylee Gramling</a> on <a href="https://unsplash.com/s/photos/beauty-salon?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
           <img src="assets/3.jpeg" />
           <p className="legend">Legend 3</p>
         </div> */}

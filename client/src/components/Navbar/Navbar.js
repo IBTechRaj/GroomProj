@@ -110,26 +110,43 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
 
   // const handleSubmitLogin = async (event) => {
   //   event.preventDefault();
-  //   console.log('logging')
-  //   try {
-  //     const res = await axios.post('http://localhost:3001/login ', loginData);
-  //     const { token } = res.data;
-  //     console.log('res', res.data);
-  //     if (token) {
-  //       setLoggedIn(true);
-  //       onCloseLoginModal()
-  //       localStorage.setItem('token', token);
-  //       console.log('jwt: ', token)
+  //   console.log('logging', loginData)
+  //   const res = await axios.post('http://localhost:3001/login ', {
+  //     withCredentials: true,
+  //     headers: {
+  //       "Accept": "application/json",
+  //       "Content-Type": "application/json"
   //     }
-  //   }
-  //   catch (error) {
-  //     console.log('Err: ', error);
-  //   }
+  //   }, {
+  //     auth: {
+  //       email: email,
+  //       password: password
+  //     }
+  //   }).then(function (response) {
+  //     console.log('Authenticated');
+  //   }).catch(function (error) {
+  //     console.log('Error on Authentication');
+  //   });
+  //   // try {
+  //   //   const res = await axios.post('http://localhost:3001/login ', loginData);
+  //   //   const { token } = res.data;
+  //   //   console.log('res', res.data);
+  //   //   if (token) {
+  //   //     setLoggedIn(true);
+  //   //     onCloseLoginModal()
+  //   //     localStorage.setItem('token', token);
+  //   //     console.log('jwt: ', token)
+  //   //   }
+  //   // }
+  //   // catch (error) {
+  //   //   console.log('Err: ', error);
+  //   // }
   // }
 
   const handleSubmitLogin = async (event) => {
     event.preventDefault();
     console.log('logging')
+
     fetch("http://localhost:3001/login", {
       method: "post",
       headers: {

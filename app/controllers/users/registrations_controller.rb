@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-
+# before_action :configure_sign_up_params, only: [:create]
   respond_to :json
 
   private
 
   def respond_with(resource, _opts = {})
+ 
     if resource.persisted?
       render json: {
         status: {code: 200, message: 'Signed up sucessfully.'},
@@ -57,9 +58,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # protected
 
-  # If you have extra params to permit, append them to the sanitizer.
+  # # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:firstname, :lastname, :gender, :date_of_birth, :mobile])
   # end
 
   # If you have extra params to permit, append them to the sanitizer.

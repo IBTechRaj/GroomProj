@@ -9,7 +9,7 @@ class User < ApplicationRecord
   
 VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
 
-enum gender: %i[female male custom]
+enum gender: %i[female male other]
 enum usertype: %i[client sprovider admin]
     validates :first_name, presence: true
     validates :last_name, presence: true

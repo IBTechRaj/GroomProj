@@ -34,7 +34,11 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
-
+  const [firstname, setFirstname] = useState('')
+  const [lastname, setLastname] = useState('')
+  const [gender, setGender] = useState(0)
+  const [mobile, setMobile] = useState('')
+  const [dob, setDob] = useState('')
 
   const loginData = {
     "email": email,
@@ -44,9 +48,19 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
   const signupData = {
     "email": email,
     "password": password,
+    "first_name": firstname,
+    "last_name": lastname,
+    "gender": gender,
+    "mobile": mobile,
+    "date_of_birth": dob,
+    "usertype": 0
   }
 
-
+  // const genderSelectItems = [
+  //   { label: 'Female', value: 0 },
+  //   { label: 'Male', value: 1 },
+  //   { label: 'Other', value: 2 }
+  // ];
   // const handleSubmitSignup = async (event) => {
   //   event.preventDefault();
   //   if (password === passwordConfirmation) {
@@ -74,7 +88,7 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
   const handleSubmitSignup = async (event) => {
     event.preventDefault();
     if (password === passwordConfirmation) {
-      console.log('signing up')
+      console.log('signing up', signupData)
       fetch("http://localhost:3001/signup", {
         method: "post",
         headers: {
@@ -84,6 +98,12 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
           user: {
             email: email,
             password: password,
+            first_name: firstname,
+            last_name: lastname,
+            gender: gender,
+            mobile: mobile,
+            date_of_birth: dob,
+            usertype: 0
           },
         }),
       })
@@ -395,56 +415,67 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
             First Name
             <input
               className="form-control"
-              placeholder="password confirmation"
-              type="password"
-              name="passwordConfirmation"
-              value={passwordConfirmation}
+              placeholder="First Name"
+              type="string"
+              name="firstname"
+              value={firstname}
               onChange={event => {
-                setPasswordConfirmation(event.target.value)
+                setFirstname(event.target.value)
               }}
             />
             Last Name
             <input
               className="form-control"
-              placeholder="password confirmation"
-              type="password"
-              name="passwordConfirmation"
-              value={passwordConfirmation}
+              placeholder="Last Name"
+              type="string"
+              name="lastName"
+              value={lastname}
               onChange={event => {
-                setPasswordConfirmation(event.target.value)
+                setLastname(event.target.value)
               }}
             />
             Gender
-            <input
-              className="form-control"
-              placeholder="password confirmation"
-              type="password"
-              name="passwordConfirmation"
-              value={passwordConfirmation}
-              onChange={event => {
-                setPasswordConfirmation(event.target.value)
+            <label>
+              Your Gender:
+              <select value={gender} onChange={event => {
+                setGender(parseInt(event.target.value))
               }}
-            />
+              >
+                <option value="0" >She</option>
+                <option value="1" >He</option>
+                <option value="2" >Others</option>
+              </select>
+            </label>
+            {/* <input
+              className="form-control"
+              placeholder="Gender"
+              type="integer"
+              name="gender"
+              value={gender}
+              onChange={event => {
+                setGender(event.target.value)
+              }}
+            /> */}
             Date of Birth
             <input
               className="form-control"
-              placeholder="password confirmation"
-              type="password"
-              name="passwordConfirmation"
-              value={passwordConfirmation}
+              placeholder="Date of Birth"
+              type="date"
+              name="dob"
+              value={dob}
               onChange={event => {
-                setPasswordConfirmation(event.target.value)
+                setDob(event.target.value)
               }}
             />
             Mobile
             <input
               className="form-control"
-              placeholder="password confirmation"
-              type="password"
-              name="passwordConfirmation"
-              value={passwordConfirmation}
+              placeholder="Mobile"
+              type="string"
+              name="mopbile"
+              value={mobile}
               onChange={event => {
-                setPasswordConfirmation(event.target.value)
+                setMobile(event.target.value)
               }}
             />
           </label>
@@ -453,8 +484,8 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
             {' '}
             <input className="w-100 btn btn-custom" type="submit" />
           </label>
-        </form>
-      </Modal>
+        </form >
+      </Modal >
 
     </>
   );

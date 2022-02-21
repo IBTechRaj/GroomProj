@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_10_124105) do
+ActiveRecord::Schema.define(version: 2022_02_18_145439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2022_02_10_124105) do
     t.integer "pincode"
     t.string "city"
     t.string "landline"
-    t.integer "mobile"
+    t.string "mobile"
     t.string "gstin"
     t.string "pan"
     t.integer "chairs"

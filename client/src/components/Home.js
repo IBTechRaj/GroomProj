@@ -1,6 +1,6 @@
 import React from 'react';
 // import Services from './pages/Services/Services'
-import About from './pages/About/About'
+import Landing from './Landing'
 // import Hero from './pages/Hero/Hero'
 // import Hero2 from './pages/Hero/Hero2'
 // import Pricing from './pages/Pricing/Pricing';
@@ -12,7 +12,8 @@ import MyCarousel from './pages/Carousel/MyCarousel'
 function Home() {
   return (
     <>
-      <MyCarousel />
+      <Landing />
+      {/* <MyCarousel /> */}
       {/* <Hero />
       <Services />
       <Hero2 />

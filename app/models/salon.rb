@@ -11,7 +11,7 @@ class Salon < ApplicationRecord
   validates :address2, presence: true
   validates :pincode, presence: true, length: { is: 6 }
   validates :city, presence: true
-  validates :landline
+  validates :landline, presence: true
   validates :mobile, presence: true, length: { is: 10 }
   validates :gstin, presence: true
   validates :pan, presence: true, length: { is: 10 }

@@ -1,6 +1,8 @@
-import React from 'react';
+// import React from 'react';
+import React, { useState, useEffect } from 'react';
 // import Services from './pages/Services/Services'
 import Landing from './Landing'
+import Salon from '../components/Salons/Salon'
 // import Hero from './pages/Hero/Hero'
 // import Hero2 from './pages/Hero/Hero2'
 // import Pricing from './pages/Pricing/Pricing';
@@ -10,9 +12,11 @@ import Gallery from './pages/Gallery/Gallery'
 import MyCarousel from './pages/Carousel/MyCarousel'
 
 function Home() {
+  const [loggedIn, setLoggedIn] = useState(false)
   return (
     <>
-      <Landing />
+      <Landing loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+      {loggedIn ? (<Salon />) : (null)}
       {/* <MyCarousel /> */}
       {/* <Hero />
       <Services />

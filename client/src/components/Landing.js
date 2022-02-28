@@ -1,7 +1,33 @@
 import React from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap'
+import axios from 'axios';
+
 
 function Landing() {
+  const jwt = localStorage.getItem('token');
+  const salonurl = 'http://localhost:3001/salons';
+  const serviceurl = 'http://localhost:3001/services';
+
+  axios.get(salonurl,
+    // {
+    //   headers: { Authorization: `Bearer ${jwt}` },
+    // }
+  )
+    .then(({ data }) => {
+      console.log('salons', data)
+    })
+
+  axios.get(serviceurl,
+    // {
+    //   headers: { Authorization: `Bearer ${jwt}` },
+    // }
+  )
+    .then(({ data }) => {
+      console.log('services', data)
+    })
+
+
+
   return (
     <>
       <section id="about">

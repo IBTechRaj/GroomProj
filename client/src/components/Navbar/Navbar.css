@@ -1,6 +1,7 @@
 .navbar {
-  background: #1c2237;
-  height: 80px;
+  /* background: #1c2237; */
+  background: #fff;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +14,7 @@
 .navbar-container {
   display: flex;
   justify-content: space-between;
-  height: 80px;
+  height: 50px;
 }
 
 .container {
@@ -50,8 +51,9 @@
 }
 
 .nav-item {
-  height: 80px;
+  height: 40px;
   border-bottom: 2px solid transparent;
+  /* margin-bottom: 5px; */
 }
 
 .nav-item:hover {
@@ -59,7 +61,7 @@
 }
 
 .nav-links {
-  color: #fff;
+  color: '#000';
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -68,7 +70,7 @@
 }
 
 .fa-bars {
-  color: #fff;
+  color: rgb(9, 9, 9);
 }
 
 .menu-icon {

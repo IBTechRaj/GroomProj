@@ -7,16 +7,16 @@ const Salon = () => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-  const [openBooking, setOpenBooking] = useState(false);
+  const [openSalon, setOpenSalon] = useState(false);
   const [name, setName] = useState('');
   const [pincode, setPincode] = useState(0);
   // const onOpenBookingModal = () => {
   //   setOpenBooking(true);
   // }
-  const onCloseBookingModal = () => setOpenBooking(false);
-  const handleSubmitBooking = () => {
+  const onCloseSalonModal = () => setOpenSalon(false);
+  const handleSubmitSalon = () => {
     console.log('Booked')
-    onCloseBookingModal()
+    onCloseSalonModal()
   }
 
   return (
@@ -24,9 +24,9 @@ const Salon = () => {
       <div className='text-center' style={{ backgroundColor: 'black' }}>
         <Button onClick={handleShow} className="btn btn-success" data-toggle="modal"><span>Add Salon</span></Button>
       </div>
-      <Modal open={openBooking} onClose={onCloseBookingModal} centre>
+      <Modal open={openSalon} onClose={onCloseSalonModal} centre>
         <h2>Add Your Salon Details</h2>
-        <form onSubmit={handleSubmitBooking}>
+        <form onSubmit={handleSubmitSalon}>
           <label className="justify-left w-100 px-5">
             <input
               className="form-control"
@@ -60,7 +60,7 @@ const Salon = () => {
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>
-            Book Your Slot
+            Add Your Salon Details
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

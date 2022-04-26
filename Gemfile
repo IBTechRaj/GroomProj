@@ -13,6 +13,7 @@ gem 'devise'
 gem 'devise-jwt'
 gem 'fast_jsonapi'
 gem 'validates_timeliness'
+gem 'i18n', '~> 1.10'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production

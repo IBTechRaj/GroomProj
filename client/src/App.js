@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Booking from './components/Bookings/Booking';
+import Carousel from './components/pages/Carousel/MyCarousel'
 
 // const getLoggedStatus = () => {
 //   let loggedIn
@@ -17,6 +18,7 @@ function App() {
   return (
     <Router>
       <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+      <Carousel  />
       {loggedIn ? (<Booking />) : (null)}
       <Switch>
         <Route path='/' exact component={Home} />

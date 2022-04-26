@@ -11,23 +11,25 @@ function Landing({ loggedIn, setLoggedIn }) {
   const salonurl = 'http://localhost:3001/salons';
   const serviceurl = 'http://localhost:3001/services';
 
-  axios.get(salonurl,
-    // {
-    //   headers: { Authorization: `Bearer ${jwt}` },
-    // }
-  )
-    .then(({ data }) => {
-      console.log('salons', data)
-    })
+  useEffect(() => {
+    axios.get(salonurl,
+      // {
+      //   headers: { Authorization: `Bearer ${jwt}` },
+      // }
+    )
+      .then(({ data }) => {
+        console.log('salons', data)
+      })
 
-  axios.get(serviceurl,
-    // {
-    //   headers: { Authorization: `Bearer ${jwt}` },
-    // }
-  )
-    .then(({ data }) => {
-      console.log('services', data)
-    })
+    axios.get(serviceurl,
+      // {
+      //   headers: { Authorization: `Bearer ${jwt}` },
+      // }
+    )
+      .then(({ data }) => {
+        console.log('services', data)
+      })
+  }, [])
 
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -106,7 +108,7 @@ function Landing({ loggedIn, setLoggedIn }) {
   const handleSubmitSpSignup = async (event) => {
     event.preventDefault();
     if (password === passwordConfirmation) {
-      console.log('signing up', signupData)
+      console.log('Sp signing up', signupData)
       fetch("http://localhost:3001/signup", {
         method: "post",
         headers: {
@@ -121,18 +123,21 @@ function Landing({ loggedIn, setLoggedIn }) {
             gender: gender,
             mobile: mobile,
             date_of_birth: dob,
-            usertype: 0
+            usertype: 1
           },
         }),
       })
         .then((res) => {
           if (res.ok) {
+            console.log('res ok', res)
             console.log(res.headers.get("Authorization"));
             localStorage.setItem("token", res.headers.get("Authorization"));
             setLoggedIn(true);
             onCloseSpSignupModal()
             return res.json();
           } else {
+            console.log('res err', res)
+            onCloseSpSignupModal()
             throw new Error(res);
           }
         })
@@ -183,7 +188,7 @@ function Landing({ loggedIn, setLoggedIn }) {
 
   const handleSubmitSpLogin = async (event) => {
     event.preventDefault();
-    console.log('logging')
+    console.log('Sp logging')
 
     fetch("http://localhost:3001/login", {
       method: "post",

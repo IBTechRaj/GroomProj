@@ -19,11 +19,12 @@ function Footer() {
       <div className='social-media-wrap'>
         <div className='footer-logo'>
           <Link to='/' className='social-logo'>
-            <MdLocalCarWash className='navbar-icon' style={{ fontSize: 24 }} />
-            MY MOTOR WASH
+          <img src="assets/SeekPng.com_group-silhouette-png_508662.png" alt="NoImg" style={{width: 50, height: 50}}/>
+            {/* <MdLocalCarWash className='navbar-icon' style={{ fontSize: 24 }} /> */}
+            GroomWell
           </Link>
         </div>
-        <small className='website-rights'>Mike's Car Wash' © 2021</small>
+        <small className='website-rights'>GroomWell Salon Services © 2022</small>
         <div className='social-icons'>
           <Link
             className='social-icon-link'

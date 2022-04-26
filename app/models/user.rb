@@ -17,7 +17,11 @@ enum usertype: %i[client sprovider admin]
     validates :date_of_birth, presence: true
     validates :email, presence: true, length:  3..244 ,
         format: { with: VALID_EMAIL_REGEX },
-        uniqueness: true
+        uniqueness: {
+          message: ->(object, data) do
+            "Hey #{object.email}, #{data[:value]} is already taken."
+          end
+        }
     
     validates :usertype, presence: true
     validates :mobile, presence: true, length: { is: 10 }

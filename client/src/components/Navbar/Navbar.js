@@ -115,6 +115,8 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
             onCloseSignupModal()
             return res.json();
           } else {
+            console.log('Error signup')
+            onCloseSignupModal()
             throw new Error(res);
           }
         })
@@ -246,8 +248,9 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
         <nav className='navbar'>
           <div className='navbar-container container'>
             <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-              <MdLocalCarWash className='navbar-icon' style={{ fontSize: 24, color: '#fb6a33', marginBottom: '12' }} />
-              <p style={{ fontSize: 30, fontWeight: 900, color: '#fb6a33' }}>MY MOTOR WASH</p>
+              {/* <MdLocalCarWash className='navbar-icon' style={{ fontSize: 24, color: '#fb6a33', marginBottom: '12' }} /> */}
+              <img src="assets/SeekPng.com_group-silhouette-png_508662.png" alt="NoImg" style={{width: 50, height: 50}}/>
+              <p style={{ fontSize: 30, fontWeight: 900, color: '#9d55e6'  }}>GroomWell</p>
             </Link>
             <div className='menu-icon' onClick={handleClick}>
               {click ? <FaTimes /> : <FaBars />}
@@ -256,7 +259,7 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
 
 
               <li className='nav-item'>
-                <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                <Link to='/' className='nav-links'  style={{ color: 'black'}} onClick={closeMobileMenu}>
                   Home
                 </Link>
               </li>
@@ -264,12 +267,13 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
                 <Link
                   to='/services'
                   className='nav-links'
+                  style={{ color: 'black'}}
                   onClick={closeMobileMenu}
                 >
                   Services
                 </Link>
               </li>
-              <li className='nav-item'>
+              {/* <li className='nav-item'>
                 <Link
                   to='/whowe'
                   className='nav-links'
@@ -305,24 +309,24 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
                 >
                   Contact
                 </Link>
-              </li>
+              </li> */}
 
               {/* </ul> */}
               {/* <ul> */}
               {/* {(openLogin || openSignup) ? ( */}
               {(loggedIn) ? (
                 <li>
-                  <button className='nav-links' style={{ backgroundColor: 'black', border: 'none' }} onClick={handleLogout}>Logout</button>
+                  <button className='nav-links' style={{ backgroundColor: '#fff', border: 'none', color: 'black' }} onClick={handleLogout}>Logout</button>
                 </li>
               )
                 : (
                   <li>
-                    <button className='nav-links' style={{ backgroundColor: 'black', border: 'none' }} onClick={onOpenLoginModal}>Login</button>
+                    <button className='nav-links' style={{ backgroundColor: '#fff', border: 'none' , color: 'black'}} onClick={onOpenLoginModal}>Login</button>
                   </li>
                 )
               }
               <li>
-                <button className='nav-links' style={{ backgroundColor: 'black', border: 'none' }} onClick={onOpenSignupModal}>Signup</button>
+                <button className='nav-links' style={{ backgroundColor: '#fff', border: 'none' , color: 'black'}} onClick={onOpenSignupModal}>Signup</button>
               </li>
             </ul>
 

@@ -204,14 +204,22 @@ function Landing({ loggedIn, setLoggedIn }) {
     })
       .then((res) => {
         if (res.ok) {
-          console.log(res.headers.get("Authorization"));
+          console.log('token', res.headers.get("Authorization"))
+          // console.log('sp in', ...Object);
+          console.log('res', res.data)
           localStorage.setItem("token", res.headers.get("Authorization"));
           setLoggedIn(true);
           onCloseSpLoginModal()
           return res.json();
         } else {
+          console.log('sp in err', res)
           return res.text().then((text) => Promise.reject(text));
         }
+      })
+      .then((data)=>{
+        let cur_user_id= data.data.id
+        let cur_user_type = data.data.usertype
+        console.log('id and type',cur_user_id, cur_user_type)
       })
       .then((json) => console.dir(json))
       .catch((err) => console.error(err));

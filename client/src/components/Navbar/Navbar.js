@@ -192,6 +192,7 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
           return res.text().then((text) => Promise.reject(text));
         }
       })
+      .then((data)=>console.log('dt',data.data))
       .then((json) => console.dir(json))
       .catch((err) => console.error(err));
   }

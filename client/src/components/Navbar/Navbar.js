@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-import { MdLocalCarWash } from 'react-icons/md';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import { Modal } from 'react-responsive-modal';
@@ -40,10 +39,10 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
   const [mobile, setMobile] = useState('')
   const [dob, setDob] = useState('')
 
-  const loginData = {
-    "email": email,
-    "password": password,
-  }
+  // const loginData = {
+    // "email": email,
+    // "password": password,
+  // }
 
   const signupData = {
     "email": email,
@@ -56,34 +55,7 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
     "usertype": 0
   }
 
-  // const genderSelectItems = [
-  //   { label: 'Female', value: 0 },
-  //   { label: 'Male', value: 1 },
-  //   { label: 'Other', value: 2 }
-  // ];
-  // const handleSubmitSignup = async (event) => {
-  //   event.preventDefault();
-  //   if (password === passwordConfirmation) {
-  //     console.log('signing up')
-  //     try {
-  //       const res = await axios.post('http://localhost:3001/users ', signupData);
-  //       const { token } = res.data;
-  //       console.log('res', res.data);
-  //       if (token) {
-  //         setLoggedIn(true);
-  //         onCloseSignupModal()
-  //         localStorage.setItem('token', token);
-  //         console.log('jwt: ', token)
-  //       }
-  //     }
-  //     catch (error) {
-  //       console.log('oh, no', error);
-  //     }
-  //   }
-  //   else {
-  //     console.log('Passwords should match')
-  //   }
-  // }
+
 
   const handleSubmitSignup = async (event) => {
     event.preventDefault();
@@ -111,7 +83,8 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
           if (res.ok) {
             console.log(res.headers.get("Authorization"));
             localStorage.setItem("token", res.headers.get("Authorization"));
-            setLoggedIn(true);
+            setLoggedIn(true)
+            console.log('lin', loggedIn)
             onCloseSignupModal()
             return res.json();
           } else {
@@ -130,42 +103,7 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
   }
 
 
-  // const handleSubmitLogin = async (event) => {
-  //   event.preventDefault();
-  //   console.log('logging', loginData)
-  //   const res = await axios.post('http://localhost:3001/login ', {
-  //     withCredentials: true,
-  //     headers: {
-  //       "Accept": "application/json",
-  //       "Content-Type": "application/json"
-  //     }
-  //   }, {
-  //     auth: {
-  //       email: email,
-  //       password: password
-  //     }
-  //   }).then(function (response) {
-  //     console.log('Authenticated');
-  //   }).catch(function (error) {
-  //     console.log('Error on Authentication');
-  //   });
-  //   // try {
-  //   //   const res = await axios.post('http://localhost:3001/login ', loginData);
-  //   //   const { token } = res.data;
-  //   //   console.log('res', res.data);
-  //   //   if (token) {
-  //   //     setLoggedIn(true);
-  //   //     onCloseLoginModal()
-  //   //     localStorage.setItem('token', token);
-  //   //     console.log('jwt: ', token)
-  //   //   }
-  //   // }
-  //   // catch (error) {
-  //   //   console.log('Err: ', error);
-  //   // }
-  // }
-
-  const handleSubmitLogin = async (event) => {
+    const handleSubmitLogin = async (event) => {
     event.preventDefault();
     console.log('logging')
 
@@ -183,28 +121,35 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
     })
       .then((res) => {
         if (res.ok) {
+          console.log('res', res)
           console.log(res.headers.get("Authorization"));
           localStorage.setItem("token", res.headers.get("Authorization"));
-          setLoggedIn(true);
+          console.log('lin-2', loggedIn)
+          setLoggedIn(true)
+          console.log('lin2', loggedIn)
           onCloseLoginModal()
           return res.json();
         } else {
           return res.text().then((text) => Promise.reject(text));
         }
       })
-      .then((data)=>console.log('dt',data.data))
+      .then((data)=>{
+        let cur_user_id= data.data.id
+        let cur_user_type = data.data.usertype
+        console.log('id and type',cur_user_id, cur_user_type)
+        if (cur_user_type === 'sprovider') {
+          alert ('It seems you are registered as Service Provider. To avail booking services, please register as Client or Call Customer Care')
+          setLoggedIn(false)
+        }
+        
+        console.log('lin3', loggedIn)
+      })
       .then((json) => console.dir(json))
       .catch((err) => console.error(err));
   }
 
 
-  // const handleLogout = () => {
-  //   delete axios.defaults.headers.common.Authorization;
-  //   setLoggedIn(false)
-  //   localStorage.removeItem('token');
-  // }
-
-  const handleLogout = () => {
+   const handleLogout = () => {
     fetch("http://localhost:3001/logout", {
       method: "delete",
       headers: {
@@ -215,7 +160,8 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
       .then((res) => {
         if (res.ok) {
           setLoggedIn(false)
-          return res.json();
+          console.log('lin4')
+          return res.json(), loggedIn;
         } else {
           return res.json().then((json) => Promise.reject(json));
         }
@@ -274,48 +220,9 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
                   Services
                 </Link>
               </li>
-              {/* <li className='nav-item'>
-                <Link
-                  to='/whowe'
-                  className='nav-links'
-                  onClick={closeMobileMenu}
-                >
-                  Who we
-                </Link>
-              </li>
-              <li className='nav-item'>
-                <Link
-                  to='/pricing'
-                  className='nav-links'
-                  onClick={closeMobileMenu}
-                >
-                  Pricing
-                </Link>
-              </li>
-              <li className='nav-item'>
-                <Link
-                  to='/gallery'
-                  className='nav-links'
-                  onClick={closeMobileMenu}
-                >
-                  Gallery
-                </Link>
-              </li>
-
-              <li className='nav-item'>
-                <Link
-                  to='/contact'
-                  className='nav-links'
-                  onClick={closeMobileMenu}
-                >
-                  Contact
-                </Link>
-              </li> */}
-
-              {/* </ul> */}
-              {/* <ul> */}
-              {/* {(openLogin || openSignup) ? ( */}
+              
               {(loggedIn) ? (
+                
                 <li>
                   <button className='nav-links' style={{ backgroundColor: '#fff', border: 'none', color: 'black' }} onClick={handleLogout}>Logout</button>
                 </li>
@@ -365,25 +272,12 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
             {' '}
             <input className="w-100 btn btn-custom" type="submit" />
           </label>
-
-          {/* <div>
-            or <Link to="/signup">Sign up</Link>
-          </div> */}
         </form>
       </Modal>
       <Modal open={openSignup} onClose={onCloseSignupModal} centre>
         <h2>Signup</h2>
         <form onSubmit={handleSubmitSignup}>
           <label className="justify-left w-100 px-5">
-            {/* User Name
-            <input
-              className="form-control"
-              placeholder="username"
-              type="text"
-              name="username"
-              value={username}
-              onChange={this.handleChange}
-            /> */}
             Email
             <input
               className="form-control"
@@ -451,16 +345,7 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
                 <option value="2" >Others</option>
               </select>
             </label>
-            {/* <input
-              className="form-control"
-              placeholder="Gender"
-              type="integer"
-              name="gender"
-              value={gender}
-              onChange={event => {
-                setGender(event.target.value)
-              }}
-            /> */}
+            
             Date of Birth
             <input
               className="form-control"

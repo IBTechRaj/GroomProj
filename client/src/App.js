@@ -6,11 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Booking from './components/Bookings/Booking';
-import Carousel from './components/pages/Carousel/MyCarousel'
-
-// const getLoggedStatus = () => {
-//   let loggedIn
-// }
+import Carousel from './components/Carousel/MyCarousel'
 
 
 function App() {
@@ -18,6 +14,7 @@ function App() {
   return (
     <Router>
       <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+      {console.log('ln', loggedIn)}
       <Carousel  />
       {loggedIn ? (<Booking />) : (null)}
       <Switch>

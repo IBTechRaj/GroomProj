@@ -209,6 +209,7 @@ function Landing({ loggedIn, setLoggedIn }) {
           console.log('res', res.data)
           localStorage.setItem("token", res.headers.get("Authorization"));
           setLoggedIn(true);
+          console.log('sin', loggedIn)
           onCloseSpLoginModal()
           return res.json();
         } else {
@@ -220,6 +221,11 @@ function Landing({ loggedIn, setLoggedIn }) {
         let cur_user_id= data.data.id
         let cur_user_type = data.data.usertype
         console.log('id and type',cur_user_id, cur_user_type)
+        if (cur_user_type === 'client') {
+          alert ('It seems you are registered as Client. To offer your services, please register as Service Provider or Call Customer Care')
+          setLoggedIn(false)
+        }
+        
       })
       .then((json) => console.dir(json))
       .catch((err) => console.error(err));

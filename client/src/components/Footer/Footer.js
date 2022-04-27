@@ -8,7 +8,6 @@ import {
   FaTwitter,
   FaLinkedin
 } from 'react-icons/fa';
-import { MdLocalCarWash } from 'react-icons/md';
 
 function Footer() {
   return (

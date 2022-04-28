@@ -4,6 +4,7 @@ import { Container, Row, Col, Image } from 'react-bootstrap'
 import axios from 'axios';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
+import SendMail from './SendMail';
 
 
 function Landing({ loggedIn, setLoggedIn }) {
@@ -75,39 +76,28 @@ function Landing({ loggedIn, setLoggedIn }) {
     "date_of_birth": dob,
     "usertype": 1
   }
+  
+  const mail_data= {
+    mail_subject : "Service Provider Proposal",
+    mail_email : email,
+    mail_name : firstname,
+    mail_message : "Dear {name}, <br/> Thank you for registering with to provide your services. <br/> Team GroomWell"
+    }
 
-  // const genderSelectItems = [
-  //   { label: 'Female', value: 0 },
-  //   { label: 'Male', value: 1 },
-  //   { label: 'Other', value: 2 }
-  // ];
-  // const handleSubmitSignup = async (event) => {
-  //   event.preventDefault();
-  //   if (password === passwordConfirmation) {
-  //     console.log('signing up')
-  //     try {
-  //       const res = await axios.post('http://localhost:3001/users ', signupData);
-  //       const { token } = res.data;
-  //       console.log('res', res.data);
-  //       if (token) {
-  //         setLoggedIn(true);
-  //         onCloseSpSignupModal()
-  //         localStorage.setItem('token', token);
-  //         console.log('jwt: ', token)
-  //       }
-  //     }
-  //     catch (error) {
-  //       console.log('oh, no', error);
-  //     }
-  //   }
-  //   else {
-  //     console.log('Passwords should match')
-  //   }
-  // }
+  
 
   const handleSubmitSpSignup = async (event) => {
     event.preventDefault();
     if (password === passwordConfirmation) {
+      const emailData = {
+        "subject": 'Service Provider Registration Success!',
+        "name": firstname,
+        "email": email,
+        "message": 
+        "Dear " + firstname + ",\n\n" + "Thank you for registering with GroomWell Services. Now you can login and fill the details of your Salon and Services\n"
+        + "For any queries please call Customer Care." + "\n\n" + "Team GroomWell"
+      }
+      
       console.log('Sp signing up', signupData)
       fetch("http://localhost:3001/signup", {
         method: "post",
@@ -142,6 +132,21 @@ function Landing({ loggedIn, setLoggedIn }) {
           }
         })
         .then((json) => console.dir(json))
+        .then(()=>{
+          // <SendMail sendmail_mail={signupData.email} sendmail_name={signupData.first_name} email_subject ={"Registration Successful"} email_message= {"Dear {mailname}, <br/> Thank you for registering. <br/> Team GroomWell"}  />
+          console.log('sp md',signupData);
+          const jwt = localStorage.getItem('token')
+      const url = 'http://localhost:3001/contacts'
+          
+          try {
+            const res =  axios.post(url, emailData, { headers: { Authorization: `Bearer ${jwt}` } });
+            console.log('res', res);
+              }
+          catch (error) {
+            console.log('oh, no', error);
+          }
+          
+        })
         .catch((err) => console.error(err));
 
     }
@@ -220,6 +225,10 @@ function Landing({ loggedIn, setLoggedIn }) {
         let cur_user_id= data.data.id
         let cur_user_type = data.data.usertype
         console.log('id and type',cur_user_id, cur_user_type)
+        if (cur_user_type === 'client') {
+          alert ('It seems you are registered as Client. To offer your services, please register as Service Provider or Call Customer Care')
+          setLoggedIn(false)
+        }
       })
       .then((json) => console.dir(json))
       .catch((err) => console.error(err));
@@ -257,6 +266,8 @@ function Landing({ loggedIn, setLoggedIn }) {
 
   return (
     <>
+    
+    {/* <SendMail email_data={mail_data} /> */}
       <Modal open={openSpLogin} onClose={onCloseSpLoginModal} centre>
         <h2>Salon Owner Login</h2>
         <form onSubmit={handleSubmitSpLogin}>

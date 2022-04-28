@@ -1,76 +1,40 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-// import {
-//   makeStyles,
-// } from "@material-ui/core";
-import 'react-responsive-modal/styles.css';
-// import TextField from '@material-ui/core/TextField';
-// import Button from '@material-ui/core/Button';
+// import 'react-responsive-modal/styles.css';
 
+const SendMail = (props) => {
+  console.log('props', props)
+//   const { mail_email,mail_message, mail_name, mail_subject } = props.email_data
+// console.log('details', mail_subject , mail_name, mail_email, mail_message)
+  // const { subject, name, email, message}=emailParams
 
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     display: 'flex',
-//     flexDirection: 'column',
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     padding: theme.spacing(2),
-
-//     '& .MuiTextField-root': {
-//       margin: theme.spacing(1),
-//       width: '300px',
-//     },
-//     '& .MuiButtonBase-root': {
-//       margin: theme.spacing(2),
-//     },
-//   },
-//   body: {
-//     background: '#61DAFB',
-//   },
-//   message: {
-//     justifyContent: 'center',
-//     background: '#61DAFB',
-//     padding: theme.spacing(2),
-//     margin: theme.spacing(1),
-//   }
-// }));
-
-
-const SendMail = () => {
-
-//   const classes = useStyles();
-
-  const [subject, setSubject] = useState('')
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
+  // const [subject, setSubject] = useState('')
+  // const [name, setName] = useState('')
+  // const [email, setEmail] = useState('')
+  // const [message, setMessage] = useState('')
 
 
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    if (subject && name && email && message) {
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+
+    if (props.email_subject && props.email_name && props.email_mail && props.email_message) {
 
       const emailData = {
-        "subject": subject,
-        "name": name,
-        "email": email,
-        "message": message
+        "subject": props.emailData.subject,
+        "name": props.email_data.name,
+        "email": props.email_data.email,
+        "message": props.emailData.message
       }
-      console.log('sending email', emailData)
-      console.log('email:', emailData)
+      // console.log('sending email', emailData)
+      // console.log('email:', emailData)
       const jwt = localStorage.getItem('token')
       const url = 'http://localhost:3001/contacts'
 
       try {
-        const res = await axios.post(url, emailData, { headers: { Authorization: `Bearer ${jwt}` } });
+        const res =  axios.post(url, emailData, { headers: { Authorization: `Bearer ${jwt}` } });
         console.log('res', res);
-        setSubject('')
-        setName('')
-        setEmail('')
-        setMessage('')
-
-      }
+          }
       catch (error) {
         console.log('oh, no', error);
       }
@@ -78,12 +42,12 @@ const SendMail = () => {
     else {
       console.log('blank fields not permitted')
     }
-  }
+  
 
   return (
     <div >
-      <h4 align='center' > You can refer your friends by sending an email from here </h4>
-      <h2 align='center' >Email Details</h2>
+      {/* <h4 align='center' > You can refer your friends by sending an email from here </h4>
+      <h2 align='center' >Email Details</h2> */}
       {/* <form className={classes.root} onSubmit={handleSubmit}>
         <TextField
           label="Subject"
@@ -123,7 +87,7 @@ const SendMail = () => {
           </Button>
         </div>
       </form> */}
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
           <label className="justify-left w-100 px-5">
             
             <input
@@ -178,8 +142,8 @@ const SendMail = () => {
 
           {/* <div>
             or <Link to="/signup">Sign up</Link>
-          </div> */}
-        </form>
+          </div> 
+        </form> */}
     </div>
   )
 

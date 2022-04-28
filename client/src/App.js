@@ -7,7 +7,7 @@ import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Booking from './components/Bookings/Booking';
 import Carousel from './components/pages/Carousel/MyCarousel'
-import SendMail from './components/SendMail';
+// import SendMail from './components/SendMail';
 
 // const getLoggedStatus = () => {
 //   let loggedIn
@@ -20,7 +20,7 @@ function App() {
     <Router>
       <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Carousel  />
-      <SendMail />
+      {/* <SendMail /> */}
       {loggedIn ? (<Booking />) : (null)}
       <Switch>
         <Route path='/' exact component={Home} />

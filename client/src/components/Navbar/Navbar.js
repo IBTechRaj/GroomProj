@@ -8,6 +8,7 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
+import SendMail from '../SendMail';
 
 
 const Navbar = ({ loggedIn, setLoggedIn }) => {
@@ -56,38 +57,29 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
     "usertype": 0
   }
 
-  // const genderSelectItems = [
-  //   { label: 'Female', value: 0 },
-  //   { label: 'Male', value: 1 },
-  //   { label: 'Other', value: 2 }
-  // ];
-  // const handleSubmitSignup = async (event) => {
-  //   event.preventDefault();
-  //   if (password === passwordConfirmation) {
-  //     console.log('signing up')
-  //     try {
-  //       const res = await axios.post('http://localhost:3001/users ', signupData);
-  //       const { token } = res.data;
-  //       console.log('res', res.data);
-  //       if (token) {
-  //         setLoggedIn(true);
-  //         onCloseSignupModal()
-  //         localStorage.setItem('token', token);
-  //         console.log('jwt: ', token)
-  //       }
-  //     }
-  //     catch (error) {
-  //       console.log('oh, no', error);
-  //     }
+  // const {email, firstname} = {signupData}
+
+  console.log('sup dat', signupData)
+
+  // const mail_data= {
+  //   mail_subject : "Registration Successful",
+  //   mail_email : email,
+  //   mail_name : firstname,
+  //   mail_message : "Dear {name}, <br/> Thank you for registering. <br/> Team GroomWell"
   //   }
-  //   else {
-  //     console.log('Passwords should match')
-  //   }
-  // }
+   
 
   const handleSubmitSignup = async (event) => {
     event.preventDefault();
     if (password === passwordConfirmation) {
+      const emailData = {
+        "subject": 'Client Registration Success!',
+        "name": firstname,
+        "email": email,
+        "message": 
+        "Dear " + firstname + ",\n\n" + "Thank you for registering with GroomWell Services. Now you can login and choose from a large number of salons or services\n"
+        + "For any queries please call Customer Care." + "\n\n" + "Team GroomWell"
+      }
       console.log('signing up', signupData)
       fetch("http://localhost:3001/signup", {
         method: "post",
@@ -113,6 +105,7 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
             localStorage.setItem("token", res.headers.get("Authorization"));
             setLoggedIn(true);
             onCloseSignupModal()
+            
             return res.json();
           } else {
             console.log('Error signup')
@@ -121,8 +114,28 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
           }
         })
         .then((json) => console.dir(json))
+        .then(()=>{
+          // <SendMail sendmail_mail={signupData.email} sendmail_name={signupData.first_name} email_subject ={"Registration Successful"} email_message= {"Dear {mailname}, <br/> Thank you for registering. <br/> Team GroomWell"}  />
+          console.log('md',signupData);
+          const jwt = localStorage.getItem('token')
+      const url = 'http://localhost:3001/contacts'
+          
+          try {
+            const res =  axios.post(url, emailData, { headers: { Authorization: `Bearer ${jwt}` } });
+            console.log('res', res);
+              }
+          catch (error) {
+            console.log('oh, no', error);
+          }
+          
+        })
         .catch((err) => console.error(err));
 
+       
+        // <SendMail sendmail_mail={signupData.email} sendmail_name={signupData.first_name} email_subject ={"Registration Successful"} email_message= {"Dear {mailname}, <br/> Thank you for registering. <br/> Team GroomWell"}  />
+        
+
+         
     }
     else {
       console.log('Passwords should match')
@@ -192,7 +205,16 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
           return res.text().then((text) => Promise.reject(text));
         }
       })
-      .then((data)=>console.log('dt',data.data))
+      .then((data)=>{
+        let cur_user_id= data.data.id
+        let cur_user_type = data.data.usertype
+        console.log('id and type',cur_user_id, cur_user_type)
+        if (cur_user_type === 'sprovider') {
+          alert ('It seems you are registered as Service Provider. To avail booking services, please register as Client or Call Customer Care')
+          setLoggedIn(false)
+        }
+        
+      })
       .then((json) => console.dir(json))
       .catch((err) => console.error(err));
   }
@@ -242,7 +264,9 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
     )
   }, []);
 
-
+// useEffect(()=>{
+//   console.log('ue sup',signupData)
+// }, [])
   return (
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
@@ -334,6 +358,7 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
           </div>
         </nav>
       </IconContext.Provider>
+      {/* <SendMail email_data={mail_data} /> */}
       <Modal open={openLogin} onClose={onCloseLoginModal} centre>
         <h2>Login</h2>
         <form onSubmit={handleSubmitLogin}>

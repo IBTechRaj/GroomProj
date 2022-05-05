@@ -7,7 +7,7 @@ class SalonsController < ApplicationController
   def create
         @salon = Salon.new(salon_params)
     
-        if @salon.save
+        if @salon.save!
           render json: @salon, status: :created, location: @salon
         else
           render json: @salon.errors, status: :unprocessable_entity

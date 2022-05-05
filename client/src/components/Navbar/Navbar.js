@@ -3,12 +3,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-import { MdLocalCarWash } from 'react-icons/md';
+// import { MdLocalCarWash } from 'react-icons/md';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
-import SendMail from '../SendMail';
+// import SendMail from '../SendMail';
+// import SignUp from '../SignUp';
 
 
 const Navbar = ({ loggedIn, setLoggedIn }) => {
@@ -41,10 +42,10 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
   const [mobile, setMobile] = useState('')
   const [dob, setDob] = useState('')
 
-  const loginData = {
-    "email": email,
-    "password": password,
-  }
+  // const loginData = {
+  //   "email": email,
+  //   "password": password,
+  // }
 
   const signupData = {
     "email": email,
@@ -77,8 +78,12 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
         "name": firstname,
         "email": email,
         "message": 
-        "Dear " + firstname + ",\n\n" + "Thank you for registering with GroomWell Services. Now you can login and choose from a large number of salons or services\n"
-        + "For any queries please call Customer Care." + "\n\n" + "Team GroomWell"
+        "Dear " + firstname 
+        + ",\n\n" 
+        + "Thank you for registering with GroomWell Services. Now you can login and choose from a large number of salons or services\n"
+        + "For any queries please call Customer Care." 
+        + "\n\n" 
+        + "Team GroomWell"
       }
       console.log('signing up', signupData)
       fetch("http://localhost:3001/signup", {
@@ -250,9 +255,9 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
 
   const showButton = () => {
     if (window.innerWidth <= 960) {
-      setButton(false);
+      setButton(!button);
     } else {
-      setButton(true);
+      setButton(!button);
     }
   };
 
@@ -397,18 +402,11 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
         </form>
       </Modal>
       <Modal open={openSignup} onClose={onCloseSignupModal} centre>
+        {/* <SignUp /> */}
         <h2>Signup</h2>
         <form onSubmit={handleSubmitSignup}>
           <label className="justify-left w-100 px-5">
-            {/* User Name
-            <input
-              className="form-control"
-              placeholder="username"
-              type="text"
-              name="username"
-              value={username}
-              onChange={this.handleChange}
-            /> */}
+            
             Email
             <input
               className="form-control"
@@ -476,16 +474,7 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
                 <option value="2" >Others</option>
               </select>
             </label>
-            {/* <input
-              className="form-control"
-              placeholder="Gender"
-              type="integer"
-              name="gender"
-              value={gender}
-              onChange={event => {
-                setGender(event.target.value)
-              }}
-            /> */}
+            
             Date of Birth
             <input
               className="form-control"

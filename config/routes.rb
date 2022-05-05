@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   }
   resources :salons 
   resources :services
+  resources :worktimes
   root 'contacts#index'
   resources :contacts
 end

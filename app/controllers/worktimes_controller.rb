@@ -1,7 +1,7 @@
 class WorktimesController < ApplicationController
     def index
-        @worktimes = W@orktime.all
-        render json: {data: @worktimes}
+        @worktimes = Worktime.all
+        render json:  @worktimes
       end
     
       def create

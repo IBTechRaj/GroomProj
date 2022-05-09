@@ -8,7 +8,7 @@ import 'react-responsive-modal/styles.css';
 
 function SpLogin(props) {
   const {spLoggedIn, setSpLoggedIn  , client, setClient, spId, setSpId} = props
-  console.log('sploginProps', props)
+  // console.log('sploginProps', props)
   const jwt = localStorage.getItem('token');
 //   const salonurl = 'http://localhost:3001/salons';
 //   const serviceurl = 'http://localhost:3001/services';
@@ -165,7 +165,7 @@ function SpLogin(props) {
         if (res.ok) {
           console.log('token', res.headers.get("Authorization"))
           // console.log('sp in', ...Object);
-          console.log('res', res.data)
+          console.log('res', res)
           localStorage.setItem("token", res.headers.get("Authorization"));
           setSpLoggedIn(true);
           setClient(false)
@@ -177,6 +177,7 @@ function SpLogin(props) {
         }
       })
       .then((data)=>{
+        console.log('d d', data.data)
         let cur_user_id= data.data.id
         let cur_user_type = data.data.usertype
         setSpId(cur_user_id)

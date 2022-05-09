@@ -60,7 +60,7 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
 
   // const {email, firstname} = {signupData}
 
-  console.log('sup dat', signupData)
+  // console.log('sup dat', signupData)
 
   // const mail_data= {
   //   mail_subject : "Registration Successful",

@@ -1,7 +1,13 @@
 class SalonsController < ApplicationController
   def index
     @salons = Salon.all
-    render json: {data: @salons}
+    render json:  @salons
+  end
+
+  
+  # GET /cats/1
+  def show
+    render json: @salon
   end
 
   def create
@@ -12,7 +18,10 @@ class SalonsController < ApplicationController
         else
           render json: @salon.errors, status: :unprocessable_entity
         end
-      end
+  end
+
+  
+
   private
 
   def salon_params

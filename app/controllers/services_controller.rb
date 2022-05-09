@@ -1,7 +1,7 @@
 class ServicesController < ApplicationController
   def index
     @services = Service.all
-    render json: {data: @services}
+    render json: @services
   end
 
   def create

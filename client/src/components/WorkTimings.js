@@ -98,6 +98,7 @@ export default function WorkTimings(props) {
                   required
                   fullWidth
                   id="opens"
+                  label="opens"
                   value={opens}
                   onChange={event => {
                     setOpens(event.target.value)

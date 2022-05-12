@@ -22,17 +22,18 @@ function App() {
   const [spLoggedIn, setSpLoggedIn] = useState(false)
   const [client, setClient]= useState(true)
   const [spId, setSpId]=useState(0)
+  const [spSalonId, setSpSalonId]=useState(0)
 
   return (
     <Router>
       <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Carousel  />
       {loggedIn ? (<Booking />) : (null)}
-      <SpLogin  spLoggedIn={spLoggedIn} setSpLoggedIn={setSpLoggedIn}  client={client} setClient={setClient} spId={spId} setSpId={setSpId} />
+      <SpLogin  spLoggedIn={spLoggedIn} setSpLoggedIn={setSpLoggedIn}  client={client} setClient={setClient} spId={spId} setSpId={setSpId} spSalonId={spSalonId} setSpSalonId={setSpSalonId} />
       <Switch>
         {client ? 
         <Landing  /> :
-        <Sprovider  spLoggedIn={spLoggedIn} setSpLoggedIn={setSpLoggedIn} spId={spId} setSpId={setSpId} client={client} setClient={setClient} />
+        <Sprovider  spLoggedIn={spLoggedIn} setSpLoggedIn={setSpLoggedIn} spId={spId} setSpId={setSpId} client={client} setClient={setClient} spSalonId={spSalonId}/>
         }
         {/* <Route path='/' exact component={Home} /> */}
       </Switch>

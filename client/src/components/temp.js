@@ -1,3 +1,45 @@
+// Refer: https://thewebdev.info/2021/02/05/how-to-reset-to-initial-state-with-react-hooks/
+  // Refactor code as shown below
+  // const initialState = {
+  //   username: "",
+  //   email: "",
+  //   password: "",
+  //   passwordConfirmation: ""
+  // };
+  
+  // export default function App() {
+  //   const [
+  //     { username, email, password, passwordConfirmation },
+  //     setState
+  //   ] = useState(initialState);
+  
+  //   const clearState = () => {
+  //     setState({ ...initialState });
+  //   };
+  
+  //   const onChange = (e) => {
+  //     const { name, value } = e.target;
+  //     setState((prevState) => ({ ...prevState, [name]: value }));
+  //   };
+  
+  //   const handleSubmit = (e) => {
+  //     e.preventDefault();
+  //     setTimeout(() => {
+  //       clearState();
+  //     }, 1000);
+  //   };
+
+//   <label>
+//   Password:
+//   <input
+//     value={password}
+//     name="password"
+//     type="password"
+//     onChange={onChange}
+//   />
+// </label>
+
+
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import FormLabel from '@mui/material/FormLabel';

@@ -9,6 +9,8 @@ import ViewData from './ViewData'
 import EditData from './EditData'
 
 function Sprovider(props) {
+
+  console.log('spro', props)
   const [salonId, setSalonId]=useState(0)
   const [showServices, setShowServices]=useState(false)
   const [viewData, setViewData]=useState(false)
@@ -73,7 +75,7 @@ const closeEdits = () => {
             <ViewData spId={props.spId} setSpId={props.setSpId} client={props.client} setClient={props.setClient} onClose={closeViews}  />
           }   
           {editData &&
-            <EditData spId={props.spId} setSpId={props.setSpId} client={props.client} setClient={props.setClient} onClose={closeEdits}  />
+            <EditData spSalonId={props.spSalonId} setSpSalonId={props.setSpSalonId} client={props.client} setClient={props.setClient} onClose={closeEdits}  />
           }   
          
           {/* {console.log('in sprov', salonId)} */}

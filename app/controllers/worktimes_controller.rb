@@ -4,6 +4,11 @@ class WorktimesController < ApplicationController
         render json:  @worktimes
       end
     
+      # GET /cats/1
+  def show
+    render json: @worktime
+  end
+
       def create
         @worktime = Worktime.new(worktime_params)
     

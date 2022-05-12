@@ -1,4 +1,6 @@
 class SalonsController < ApplicationController
+  before_action :set_salon, only: [:show, :update, :destroy]
+
   def index
     @salons = Salon.all
     render json:  @salons
@@ -19,10 +21,21 @@ class SalonsController < ApplicationController
           render json: @salon.errors, status: :unprocessable_entity
         end
   end
+  # PATCH/PUT /salons/1
+  def update
+    if @salon.update(salon_params)
+      render json: @salon
+    else
+      render json: @salon.errors, status: :unprocessable_entity
+    end
+  end
 
   
 
   private
+  def set_salon
+    @salon = Salon.find(params[:id])
+  end
 
   def salon_params
     params.require(:salon).permit(:name, :address1, :address2, :pincode, :city, :landline, :mobile, :gstin, :pan, :chairs, :user_id)

@@ -25,61 +25,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 // import { FormGroup } from '@mui/material';
 import Services from './Services';
 
-// function Copyright(props) {
-
-  // Refer: https://thewebdev.info/2021/02/05/how-to-reset-to-initial-state-with-react-hooks/
-  // Refactor code as shown below
-  // const initialState = {
-  //   username: "",
-  //   email: "",
-  //   password: "",
-  //   passwordConfirmation: ""
-  // };
-  
-  // export default function App() {
-  //   const [
-  //     { username, email, password, passwordConfirmation },
-  //     setState
-  //   ] = useState(initialState);
-  
-  //   const clearState = () => {
-  //     setState({ ...initialState });
-  //   };
-  
-  //   const onChange = (e) => {
-  //     const { name, value } = e.target;
-  //     setState((prevState) => ({ ...prevState, [name]: value }));
-  //   };
-  
-  //   const handleSubmit = (e) => {
-  //     e.preventDefault();
-  //     setTimeout(() => {
-  //       clearState();
-  //     }, 1000);
-  //   };
-
-//   <label>
-//   Password:
-//   <input
-//     value={password}
-//     name="password"
-//     type="password"
-//     onChange={onChange}
-//   />
-// </label>
-
-//   return (
-//     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://mui.com/">
-//         GroomWellServices
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
-
 const theme = createTheme();
 
 export default function Salons(props) {
@@ -131,40 +76,13 @@ const salon={
       })
   };
 
-  
-  // const [serviceName, setServiceName]=useState("")
-  // const [serviceDuration, setServiceDuration]=useState("")
-  // const [servicePrice, setServicePrice]=useState("0")
-  // const [servicesBtn, setServicesBtn]=useState(false)
-
+ 
 const [showServices, setShowServices]=useState(true)
 
 const closeChild = () => {
     setShowServices(false)
 };
-    // const service={
-    //   stype: serviceName,
-    //   sduration: serviceDuration,
-    //   sprice: servicePrice,
-    //   salon_id: salonId,
-    // }
-    
-    // const handleServiceSubmit = (e) => {
-    //       e.preventDefault();
-    //       console.log('servicesData', service)
-    //     const jwt = localStorage.getItem('token');
-    //     const url = 'http://localhost:3001/services';
-    //     axios.post(url, { service }, {
-    //       headers: { Authorization: `Bearer ${jwt}` },
-    //     })
-    //       .then(response => {
-    //         if (response.status === 201) {
-    //           console.log('Service Added')
-    //           setServicesBtn(!servicesBtn)
-    //          }
-    //       })
-    //     };
-
+   
 
   return (
     <ThemeProvider theme={theme}>

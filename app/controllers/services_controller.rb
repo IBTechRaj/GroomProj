@@ -1,4 +1,6 @@
 class ServicesController < ApplicationController
+  before_action :set_service, only: [:show, :update, :destroy]
+
   def index
     @services = Service.all
     render json: @services
@@ -14,9 +16,19 @@ class ServicesController < ApplicationController
     end
   end
 
+   # DELETE /cats/1
+  def destroy
+    @service.destroy
+  end
+
   private
+
+  def set_service
+    @service = Service.find(params[:id])
+  end
 
   def service_params
     params.require(:service).permit(:stype, :sduration, :sprice, :salon_id)
   end
+
 end

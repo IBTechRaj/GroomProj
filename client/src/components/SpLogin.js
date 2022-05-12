@@ -7,7 +7,7 @@ import 'react-responsive-modal/styles.css';
 
 
 function SpLogin(props) {
-  const {spLoggedIn, setSpLoggedIn  , client, setClient, spId, setSpId} = props
+  const {spLoggedIn, setSpLoggedIn  , client, setClient, spId, setSpId, spSalonId, setSpSalonId} = props
   // console.log('sploginProps', props)
   const jwt = localStorage.getItem('token');
 //   const salonurl = 'http://localhost:3001/salons';
@@ -178,10 +178,12 @@ function SpLogin(props) {
       })
       .then((data)=>{
         console.log('d d', data.data)
+        let cur_user_salon_id = data.data.salon_ids[0]
         let cur_user_id= data.data.id
         let cur_user_type = data.data.usertype
         setSpId(cur_user_id)
-        console.log('id and type',cur_user_id, cur_user_type)
+        setSpSalonId(cur_user_salon_id)
+        console.log('id,type,salon',cur_user_id, cur_user_type, cur_user_salon_id)
         if (cur_user_type === 'client') {
           alert ('It seems you are registered as Client. To offer your services, please register as Service Provider or Call Customer Care')
           setSpLoggedIn(false)

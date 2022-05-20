@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :appointments 
   has_many :salons
+  # has_one_attached :image
   
 VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
 
@@ -34,4 +35,8 @@ enum usertype: %i[client sprovider admin]
     return "#{first_name} #{last_name}".strip if first_name || last_name
     'Annonymous'
   end
+
+  # def get_image_url
+  #   Rails.application.routes.url_helpers.url_for(image) if image.attached?
+  # end
 end

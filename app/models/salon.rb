@@ -2,9 +2,11 @@ class Salon < ApplicationRecord
   belongs_to :user
 
   has_many :appointments, dependent: :destroy 
-  has_many :services
-  has_many :businesses
-  has_many :worktimes
+  has_many :services, dependent: :destroy
+  has_many :businesses, dependent: :destroy
+  # has_many :worktimes
+
+  has_one_attached :image
 
   validates :name, presence: true
   validates :address1, presence: true
@@ -17,4 +19,7 @@ class Salon < ApplicationRecord
   validates :pan, presence: true, length: { is: 10 }
   validates :chairs, numericality: {message: "%{value} should be 1 or more"}
 
+  def get_image_url
+    Rails.application.routes.url_helpers.url_for(image) if image.attached?
+  end
 end

@@ -3,7 +3,9 @@ class SalonsController < ApplicationController
 
   def index
     @salons = Salon.all
-    render json:  @salons
+    render json:  @salons.map { |salon|
+    SalonSerializer.new(salon).serializable_hash[:data][:attributes]
+  }
   end
 
   
@@ -16,7 +18,7 @@ class SalonsController < ApplicationController
         @salon = Salon.new(salon_params)
     
         if @salon.save!
-          render json: @salon, status: :created, location: @salon
+          render json: SalonSerializer.new(@salon).serializable_hash[:data][:attributes], status: :created, location: @salon
         else
           render json: @salon.errors, status: :unprocessable_entity
         end
@@ -38,7 +40,7 @@ class SalonsController < ApplicationController
   end
 
   def salon_params
-    params.require(:salon).permit(:name, :address1, :address2, :pincode, :city, :landline, :mobile, :gstin, :pan, :chairs, :user_id)
+    params.require(:salon).permit(:name, :address1, :address2, :pincode, :city, :landline, :mobile, :gstin, :pan, :chairs, :user_id, :image)
   end
 end
 # before_action :set_cat, only: [:show, :update, :destroy]

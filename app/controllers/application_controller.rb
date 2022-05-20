@@ -7,6 +7,6 @@ class ApplicationController < ActionController::API
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :gender, :date_of_birth, :mobile, :usertype])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :gender, :date_of_birth, :mobile, :usertype, :image])
   end
 end

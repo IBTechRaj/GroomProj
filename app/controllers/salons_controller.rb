@@ -40,7 +40,8 @@ class SalonsController < ApplicationController
   end
 
   def salon_params
-    params.require(:salon).permit(:name, :address1, :address2, :pincode, :city, :landline, :mobile, :gstin, :pan, :chairs, :user_id, :image)
+    # require(:salon).
+    params.permit(:name, :address1, :address2, :pincode, :city, :landline, :mobile, :gstin, :pan, :chairs, :user_id, :weekday, :opens, :closes, :image)
   end
 end
 # before_action :set_cat, only: [:show, :update, :destroy]

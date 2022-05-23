@@ -1,4 +1,5 @@
 class SalonSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :salon_id, :get_image_url
+  # include JSONAPI::Serializer
+  attributes :id, :name, :address1, :address2, :pincode, :city, :landline, :mobile, :gstin, :pan, :chairs, :user_id, :weekday, :opens, :closes, :get_image_url
 end

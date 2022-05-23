@@ -56,14 +56,7 @@ function SpLogin(props) {
     "usertype": 1
   }
   
-//   const mail_data= {
-//     mail_subject : "Service Provider Proposal",
-//     mail_email : email,
-//     mail_name : firstname,
-//     mail_message : "Dear {name}, <br/> Thank you for registering with to provide your services. <br/> Team GroomWell"
-//     }
-
-  
+ 
 
   const handleSubmitSpSignup = async (event) => {
     event.preventDefault();
@@ -104,6 +97,7 @@ function SpLogin(props) {
         .then((res) => {
           if (res.ok) {
             console.log('res ok', res)
+            // console.log('entries', res.headers.has())
             console.log(res.headers.get("Authorization"));
             localStorage.setItem("token", res.headers.get("Authorization"));
             setSpLoggedIn(true);
@@ -116,10 +110,11 @@ function SpLogin(props) {
             throw new Error(res);
           }
         })
-        .then((json) => console.dir(json))
+        // .then((json) => console.dir(json))
+        // .then(res => res.json())
         .then((data)=>{
+          console.log('d',data)
           let cur_user_id= data.data.id
-        // let cur_user_type = data.data.usertype
         console.log('spId',cur_user_id)
         setSpId(cur_user_id)
           console.log('sp md',signupData);

@@ -23,7 +23,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 // import { FormGroup } from '@mui/material';
-import WorkTimings from './WorkTimings';
+// import WorkTimings from './WorkTimings';
 
 
   
@@ -32,7 +32,7 @@ export default function ViewData(props) {
   console.log('view props', props)
   const [salonData, setSalonData] = useState(null);
   const [serviceData, setServiceData] = useState(null);
-  const [worktimeData, setWorktimeData] = useState(null);
+  // const [worktimeData, setWorktimeData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -75,25 +75,25 @@ const salonurl = `http://localhost:3001/salons`;
     setLoading(false);
   }
 };
-const getWorktimeData = async () => {
-  try {
-    const response = await axios.get(
-      worktimesurl
-    );
-    setWorktimeData(response.data);
-    console.log('dat', response)
-    // console.log('da', data)
-  setError(null);
-} catch (err) {
-  setError(err.message);
-  setWorktimeData(null);
-} finally {
-  setLoading(false);
-}
-};
+// const getWorktimeData = async () => {
+//   try {
+//     const response = await axios.get(
+//       worktimesurl
+//     );
+//     setWorktimeData(response.data);
+//     console.log('dat', response)
+//     // console.log('da', data)
+//   setError(null);
+// } catch (err) {
+//   setError(err.message);
+//   setWorktimeData(null);
+// } finally {
+//   setLoading(false);
+// }
+// };
     getSalonData();
     getServiceData()
-    getWorktimeData()
+    // getWorktimeData()
     
   }, [])
 
@@ -134,8 +134,8 @@ return (
             </li>) : null
           ))}
       </ul>
-      <h1>Work Time Details</h1>
-      <ul>
+      {/* <h1>Work Time Details</h1> */}
+      {/* <ul>
         {worktimeData &&
           worktimeData.map(({ id, opens, closes, weekday}) => (
             (id === 1) ?
@@ -146,7 +146,7 @@ return (
               
             </li>) : null
           ))}
-      </ul>
+      </ul> */}
 </div>
 <Box
   sx={{

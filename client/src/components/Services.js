@@ -158,9 +158,9 @@ return (
     
   </Box>
 </Box>
-{showServices &&
+{/* {showServices &&
         <WorkTimings salonId={props.salonId} setSalonId={props.setSalonId} onClose={closeChild}  />
-}
+} */}
 </Container>
 </ThemeProvider >
 )

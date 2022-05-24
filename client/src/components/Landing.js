@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap'
 import axios from 'axios';
 // import { makeStyles } from '@mui/styles';
 import { makeStyles } from '@material-ui/styles';
 import Grid from '@mui/material/Grid'
+import SalonCard from './SalonCard'
 import Card from './Card'
 
 //https://st.depositphotos.com/1491329/2998/i/450/depositphotos_29983783-stock-photo-healthy-long-black-hair-beauty.jpg
@@ -19,12 +20,16 @@ import { ClassNames } from '@emotion/react';
 
 const useStyles = makeStyles({
   gridContainer: {
-    paddingLeft: '100px',
+    paddingLeft: '20px',
     paddingRight: '20px'
   }
 })
 function Landing({ loggedIn, setLoggedIn }) {
   // const jwt = localStorage.getItem('token');
+
+  const [salons, setSalons]=useState([])
+  const [services, setServices]=useState([])
+
   const classes=useStyles()
   const salonurl = 'http://localhost:3001/salons';
   const serviceurl = 'http://localhost:3001/services';
@@ -36,6 +41,7 @@ function Landing({ loggedIn, setLoggedIn }) {
       // }
     )
       .then(({ data }) => {
+        setSalons(data)
         console.log('salons', data)
       })
 
@@ -45,28 +51,44 @@ function Landing({ loggedIn, setLoggedIn }) {
       // }
     )
       .then(({ data }) => {
+        setServices(data)
         console.log('services', data)
       })
   }, [])
 
   return (
+    
     <>
-    <Grid container spacing={4} className={classes.gridContainer} justify="center">
+    <h2> Salon images</h2>
+        {/* <div className="container d-md-flex flex-wrap "> */}
+        <Grid container spacing={2} className={classes.gridContainer} justify="center">
+        
+          {salons.map(salon => (
+            <Grid item xs={12} sm={6}>
+            <Card key={salon.id} salon={salon} />
+            </Grid>
+          ))}
+        {/* </div> */}
+      
+     
+    </Grid>
+
+    {/* <Grid container spacing={4} className={classes.gridContainer} justify="center">
       <Grid item xs={12} sm={6} md={4}>
-      <Card />
+      <SalonCard />
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
-      <Card />
+      <SalonCard />
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
-      <Card />
+      <SalonCard />
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
-      <Card />
+      <SalonCard />
       </Grid>
     
    
-    </Grid>
+    </Grid> */}
       {/* <section id="about">
         <Container className="container">
           <Row className="row">

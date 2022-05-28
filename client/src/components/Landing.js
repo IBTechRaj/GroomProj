@@ -24,11 +24,13 @@ const useStyles = makeStyles({
     paddingRight: '20px'
   }
 })
-function Landing({ loggedIn, setLoggedIn }) {
+function Landing({ loggedIn, setLoggedIn , userId, userName}) {
+
+  console.log('landing,id', userId, userName)
   // const jwt = localStorage.getItem('token');
 
   const [salons, setSalons]=useState([])
-  const [services, setServices]=useState([])
+  // const [services, setServices]=useState([])
 
   const classes=useStyles()
   const salonurl = 'http://localhost:3001/salons';
@@ -42,18 +44,18 @@ function Landing({ loggedIn, setLoggedIn }) {
     )
       .then(({ data }) => {
         setSalons(data)
-        console.log('salons', data)
+        console.log('salons', salons)
       })
 
-    axios.get(serviceurl,
+    // axios.get(serviceurl,
       // {
       //   headers: { Authorization: `Bearer ${jwt}` },
       // }
-    )
-      .then(({ data }) => {
-        setServices(data)
-        console.log('services', data)
-      })
+    // )
+      // .then(({ data }) => {
+      //   setServices(data)
+      //   console.log('services', data)
+      // })
   }, [])
 
   return (
@@ -64,8 +66,8 @@ function Landing({ loggedIn, setLoggedIn }) {
         <Grid container spacing={2} className={classes.gridContainer} justify="center">
         
           {salons.map(salon => (
-            <Grid item xs={12} sm={6}>
-            <Card key={salon.id} salon={salon} />
+            <Grid item xs={12} sm={6}  key={salon.id}>
+            <Card salon={salon} userId={userId} userName={userName} />
             </Grid>
           ))}
         {/* </div> */}

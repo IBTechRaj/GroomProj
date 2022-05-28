@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :worktimes
   root 'contacts#index'
   resources :contacts
+  resources :appointments
   get '/utils/:id', to: 'utils#usersalon'
 
 end

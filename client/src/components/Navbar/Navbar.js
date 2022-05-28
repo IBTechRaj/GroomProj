@@ -12,7 +12,7 @@ import 'react-responsive-modal/styles.css';
 // import SignUp from '../SignUp';
 
 
-const Navbar = ({ loggedIn, setLoggedIn }) => {
+const Navbar = ({ loggedIn, setLoggedIn, userId, setUserId, userName, setUserName }) => {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -106,6 +106,7 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
       })
         .then((res) => {
           if (res.ok) {
+            console.log('signedUp', res)
             console.log(res.headers.get("Authorization"));
             localStorage.setItem("token", res.headers.get("Authorization"));
             setLoggedIn(true);
@@ -117,6 +118,13 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
             onCloseSignupModal()
             throw new Error(res);
           }
+        })
+        .then((data)=>{
+          setUserId(data.data.id)
+          console.log('userId', userId)
+          setUserName(data.data.first_name)
+          // let cur_user_type = data.data.usertype
+                   
         })
         .then((json) => console.dir(json))
         .then(()=>{
@@ -211,9 +219,13 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
         }
       })
       .then((data)=>{
-        let cur_user_id= data.data.id
+        setUserId(data.data.id)
+        setUserName(data.data.first_name)
+        console.log('userId', userId, data.data.id)
+        // let cur_user_id= data.data.id
         let cur_user_type = data.data.usertype
-        console.log('id and type',cur_user_id, cur_user_type)
+        let cur_user_name=data.data.first_name
+        console.log(' type, name', cur_user_type, cur_user_name)
         if (cur_user_type === 'sprovider') {
           alert ('It seems you are registered as Service Provider. To avail booking services, please register as Client or Call Customer Care')
           setLoggedIn(false)

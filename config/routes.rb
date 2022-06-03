@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   resources :contacts
   resources :appointments
   get '/utils/:id', to: 'utils#usersalon'
+  get 'appointments/:salonId/:aptdate', to: 'appointments#getSalonDateAppts'
 
 end

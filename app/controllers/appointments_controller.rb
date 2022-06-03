@@ -17,6 +17,17 @@ class AppointmentsController < ApplicationController
         end
     end
     
+    def getSalonDateAppts
+        # @appointments = Appointment.all
+        # render json:  @appointments.map { |appt|
+        # AppointmentSerializer.new(appt).serializable_hash[:data][:attributes]
+    # }
+        render json: Appointment.getSalonDateAppts(params[:salonId], params[:aptdate])
+    end
+
+    def getSalonUsersAppts
+        render json: Appointment.getSalonUsersAppts(params[:salonId], params[:suser])
+    end
         # DELETE /cats/1
     def destroy
         @appointment.destroy
@@ -29,7 +40,7 @@ class AppointmentsController < ApplicationController
     end
     
     def appointment_params
-        params.permit(:apptdate, :appttime, :service, :salon_id, :user_id)
+        params.permit(:apptdate, :appttime, :service, :salon_id, :user_id, :getSalonDateAppts)
     end
          
 end

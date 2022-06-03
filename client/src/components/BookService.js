@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState} from 'react'
+import { useState, useEffect} from 'react'
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -37,27 +37,31 @@ export default function Elevation(props) {
 const [service, setService]=useState('Choose Service')
 const [showTime, setShowTime]=useState(false)
 const [apptDate, setApptDate]=useState()
-const [apptTime, setApptTime]=useState()
+const [apptTime, setApptTime]=useState('0:00')
+// const [todayAppts, setTodayAppts]=useState([])
 
 let handleServiceChange = (e) => {
   setService(e.target.value)
 }
 
-const setDateShowTime=()=>{
-  setShowTime(true)
-  setApptDate(startDate)
-  const jwt = localStorage.getItem('token');
-    const apptUrl = 'http://localhost:3001/appointments';
-  const reserved = axios.get(apptUrl, {
-  headers: { Authorization: `Bearer ${jwt}` },
-    })
-      .then(response => {
-        if (response.status === 201) {
-          console.log('Appointment Added')
-          // setServicesBtn(!servicesBtn)
-         }
-      })
-}
+
+
+
+  const setDateShowTime=()=>{
+    setShowTime(true)
+    setApptDate(startDate)
+    const aptDate=startDate.toLocaleDateString('ko-KR', { year:"numeric", month:"numeric",day:"numeric"}).replace(/\. /g,"-");
+    // const aptDate3=aptDate.replace(".","");
+    const aptDate4=startDate.toUTCString()
+    const jwt = localStorage.getItem('token');
+    console.log('dt fmt', aptDate4)
+    
+    
+  }
+
+//   useEffect(() => {
+//     setDateShowTime()
+// },[todayAppts])
 
 const createAppointment=(e)=>{
   e.preventDefault()
@@ -138,8 +142,8 @@ const [startDate, setStartDate] = useState(new Date());
                                   <Row >
                                     <Col xs={6} style={{marginLeft: 200, position: 'absolute'}}>
                                       
-                                      {showTime ? <TimeSlots setApptTime={setApptTime} setShowTime={setShowTime} /> : null}
-                                        { console.log('dt,tm',  startDate, apptTime)}
+                                      {showTime ? <TimeSlots setApptTime={setApptTime} setShowTime={setShowTime} startDate={startDate} salonId={props.salonId}/> : null}
+                                        { console.log('dt,tm',  startDate.toLocaleDateString(), apptTime)}
                                       </Col>
                                     <Col xs={6} >
                                     <DatePicker

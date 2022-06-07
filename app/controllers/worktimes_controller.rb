@@ -1,4 +1,5 @@
 class WorktimesController < ApplicationController
+  # this is not required. can be removed finally
     def index
         @worktimes = Worktime.all
         render json:  @worktimes

@@ -16,6 +16,9 @@ class ServicesController < ApplicationController
     end
   end
 
+  def getSalonServices
+    render json: Service.getSalonServices(params[:salon_id])
+  end
    # DELETE /cats/1
   def destroy
     @service.destroy
@@ -28,7 +31,7 @@ class ServicesController < ApplicationController
   end
 
   def service_params
-    params.require(:service).permit(:stype, :sduration, :sprice, :salon_id)
+    params.permit(:stype, :sduration, :sprice, :salon_id, :getSalonServices)
   end
 
 end

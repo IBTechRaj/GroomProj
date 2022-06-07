@@ -11,7 +11,6 @@ class ContactsController < ApplicationController
       @contact = Contact.new(contact_params)
       if @contact.save!
         ContactsMailer.contact_email(@contact).deliver_now
-        # redirect_to contact_path(@contact.id)
       else
         render :new
       end

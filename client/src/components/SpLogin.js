@@ -5,17 +5,16 @@ import axios from 'axios';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 
-
 function SpLogin(props) {
-  const {spLoggedIn, setSpLoggedIn  , client, setClient, spId, setSpId, spSalonId, setSpSalonId} = props
+  const { spLoggedIn, setSpLoggedIn, client, setClient, spId, setSpId, spSalonId, setSpSalonId } = props
   // console.log('sploginProps', props)
   const jwt = localStorage.getItem('token');
-//   const salonurl = 'http://localhost:3001/salons';
-//   const serviceurl = 'http://localhost:3001/services';
+  //   const salonurl = 'http://localhost:3001/salons';
+  //   const serviceurl = 'http://localhost:3001/services';
 
-  
+
   const [click, setClick] = useState(false);
-//   const [button, setButton] = useState(true);
+  //   const [button, setButton] = useState(true);
 
   const [openSpLogin, setOpenSpLogin] = useState(false);
   const [openSpSignup, setOpenSpSignup] = useState(false);
@@ -40,10 +39,10 @@ function SpLogin(props) {
   const [mobile, setMobile] = useState('')
   const [dob, setDob] = useState('')
 
-//   const loginData = {
-//     "email": email,
-//     "password": password,
-//   }
+  //   const loginData = {
+  //     "email": email,
+  //     "password": password,
+  //   }
 
   const signupData = {
     "email": email,
@@ -55,8 +54,8 @@ function SpLogin(props) {
     "date_of_birth": dob,
     "usertype": 1
   }
-  
- 
+
+
 
   const handleSubmitSpSignup = async (event) => {
     event.preventDefault();
@@ -65,16 +64,16 @@ function SpLogin(props) {
         "subject": 'Service Provider Registration Success!',
         "name": firstname,
         "email": email,
-        "message": 
-        "Dear " + 
-        firstname + 
-        ",\n\n" + 
-        "Thank you for registering with GroomWell Services. Now you can login and fill the details of your Salon and Services\n"
-        + "For any queries please call Customer Care." + 
-        "\n\n" + 
-        "Team GroomWell"
+        "message":
+          "Dear " +
+          firstname +
+          ",\n\n" +
+          "Thank you for registering with GroomWell Services. Now you can login and fill the details of your Salon and Services\n"
+          + "For any queries please call Customer Care." +
+          "\n\n" +
+          "Team GroomWell"
       }
-      
+
       console.log('Sp signing up', signupData)
       fetch("http://localhost:3001/signup", {
         method: "post",
@@ -112,23 +111,23 @@ function SpLogin(props) {
         })
         // .then((json) => console.dir(json))
         // .then(res => res.json())
-        .then((data)=>{
-          console.log('d',data)
-          let cur_user_id= data.data.id
-        console.log('spId',cur_user_id)
-        setSpId(cur_user_id)
-          console.log('sp md',signupData);
+        .then((data) => {
+          console.log('d', data)
+          let cur_user_id = data.data.id
+          console.log('spId', cur_user_id)
+          setSpId(cur_user_id)
+          console.log('sp md', signupData);
           const jwt = localStorage.getItem('token')
-      const url = 'http://localhost:3001/contacts'
-          
+          const url = 'http://localhost:3001/contacts'
+
           try {
-            const res =  axios.post(url, emailData, { headers: { Authorization: `Bearer ${jwt}` } });
+            const res = axios.post(url, emailData, { headers: { Authorization: `Bearer ${jwt}` } });
             console.log('res', res);
-              }
+          }
           catch (error) {
             console.log('oh, no', error);
           }
-          
+
         })
         .catch((err) => console.error(err));
 
@@ -139,7 +138,7 @@ function SpLogin(props) {
   }
 
 
-  
+
   const handleSubmitSpLogin = async (event) => {
     event.preventDefault();
     console.log('Sp logging')
@@ -171,16 +170,16 @@ function SpLogin(props) {
           return res.text().then((text) => Promise.reject(text));
         }
       })
-      .then((data)=>{
+      .then((data) => {
         console.log('d d', data.data)
         let cur_user_salon_id = data.data.salon_ids[0]
-        let cur_user_id= data.data.id
+        let cur_user_id = data.data.id
         let cur_user_type = data.data.usertype
         setSpId(cur_user_id)
         setSpSalonId(cur_user_salon_id)
-        console.log('id,type,salon',cur_user_id, cur_user_type, cur_user_salon_id)
+        console.log('id,type,salon', cur_user_id, cur_user_type, cur_user_salon_id)
         if (cur_user_type === 'client') {
-          alert ('It seems you are registered as Client. To offer your services, please register as Service Provider or Call Customer Care')
+          alert('It seems you are registered as Client. To offer your services, please register as Service Provider or Call Customer Care')
           setSpLoggedIn(false)
         }
       })
@@ -221,177 +220,177 @@ function SpLogin(props) {
 
   return (
     <>
-    <div>
-    
-    {/* <SendMail email_data={mail_data} /> */}
-      <Modal open={openSpLogin} onClose={onCloseSpLoginModal} centre>
-        <h2>Salon Owner Login</h2>
-        <form onSubmit={handleSubmitSpLogin}>
-          <label className="justify-left w-100 px-5">
-            <input
-              className="form-control"
-              placeholder="email"
-              type="text"
-              name="email"
-              value={email}
-              onChange={event => {
-                setEmail(event.target.value)
-              }}
-            />
-            <br />
-            <input
-              className="form-control"
-              placeholder="password"
-              type="password"
-              name="password"
-              value={password}
-              onChange={event => {
-                setPassword(event.target.value)
-              }}
-            />
-          </label>
-          <br /><br />
-          <label className="justify-left w-100 px-5">
-            {' '}
-            <input className="w-100 btn btn-custom" type="submit" />
-          </label>
+      <div>
 
-          {/* <div>
+        {/* <SendMail email_data={mail_data} /> */}
+        <Modal open={openSpLogin} onClose={onCloseSpLoginModal} centre>
+          <h2>Salon Owner Login</h2>
+          <form onSubmit={handleSubmitSpLogin}>
+            <label className="justify-left w-100 px-5">
+              <input
+                className="form-control"
+                placeholder="email"
+                type="text"
+                name="email"
+                value={email}
+                onChange={event => {
+                  setEmail(event.target.value)
+                }}
+              />
+              <br />
+              <input
+                className="form-control"
+                placeholder="password"
+                type="password"
+                name="password"
+                value={password}
+                onChange={event => {
+                  setPassword(event.target.value)
+                }}
+              />
+            </label>
+            <br /><br />
+            <label className="justify-left w-100 px-5">
+              {' '}
+              <input className="w-100 btn btn-custom" type="submit" />
+            </label>
+
+            {/* <div>
             or <Link to="/signup">Sign up</Link>
           </div> */}
-        </form>
-      </Modal>
-      <Modal open={openSpSignup} onClose={onCloseSpSignupModal} centre>
-        <h2> Salon Owner Signup</h2>
-        <form onSubmit={handleSubmitSpSignup}>
-          <label className="justify-left w-100 px-5">
-            
-            Email
-            <input
-              className="form-control"
-              placeholder="email"
-              type="text"
-              name="email"
-              value={email}
-              onChange={event => {
-                setEmail(event.target.value)
-              }}
-            />
-            Password
-            <input
-              className="form-control"
-              placeholder="password"
-              type="password"
-              name="password"
-              value={password}
-              onChange={event => {
-                setPassword(event.target.value)
-              }}
-            />
-            Confirm Password
-            <input
-              className="form-control"
-              placeholder="password confirmation"
-              type="password"
-              name="passwordConfirmation"
-              value={passwordConfirmation}
-              onChange={event => {
-                setPasswordConfirmation(event.target.value)
-              }}
-            />
-            First Name
-            <input
-              className="form-control"
-              placeholder="First Name"
-              type="string"
-              name="firstname"
-              value={firstname}
-              onChange={event => {
-                setFirstname(event.target.value)
-              }}
-            />
-            Last Name
-            <input
-              className="form-control"
-              placeholder="Last Name"
-              type="string"
-              name="lastName"
-              value={lastname}
-              onChange={event => {
-                setLastname(event.target.value)
-              }}
-            />
-            Gender
-            <label>
-              Your Gender:
-              <select value={gender} onChange={event => {
-                setGender(parseInt(event.target.value))
-              }}
-              >
-                <option value="0" >She</option>
-                <option value="1" >He</option>
-                <option value="2" >Others</option>
-              </select>
+          </form>
+        </Modal>
+        <Modal open={openSpSignup} onClose={onCloseSpSignupModal} centre>
+          <h2> Salon Owner Signup</h2>
+          <form onSubmit={handleSubmitSpSignup}>
+            <label className="justify-left w-100 px-5">
+
+              Email
+              <input
+                className="form-control"
+                placeholder="email"
+                type="text"
+                name="email"
+                value={email}
+                onChange={event => {
+                  setEmail(event.target.value)
+                }}
+              />
+              Password
+              <input
+                className="form-control"
+                placeholder="password"
+                type="password"
+                name="password"
+                value={password}
+                onChange={event => {
+                  setPassword(event.target.value)
+                }}
+              />
+              Confirm Password
+              <input
+                className="form-control"
+                placeholder="password confirmation"
+                type="password"
+                name="passwordConfirmation"
+                value={passwordConfirmation}
+                onChange={event => {
+                  setPasswordConfirmation(event.target.value)
+                }}
+              />
+              First Name
+              <input
+                className="form-control"
+                placeholder="First Name"
+                type="string"
+                name="firstname"
+                value={firstname}
+                onChange={event => {
+                  setFirstname(event.target.value)
+                }}
+              />
+              Last Name
+              <input
+                className="form-control"
+                placeholder="Last Name"
+                type="string"
+                name="lastName"
+                value={lastname}
+                onChange={event => {
+                  setLastname(event.target.value)
+                }}
+              />
+              Gender
+              <label>
+                Your Gender:
+                <select value={gender} onChange={event => {
+                  setGender(parseInt(event.target.value))
+                }}
+                >
+                  <option value="0" >She</option>
+                  <option value="1" >He</option>
+                  <option value="2" >Others</option>
+                </select>
+              </label>
+
+              Date of Birth
+              <input
+                className="form-control"
+                placeholder="Date of Birth"
+                type="date"
+                name="dob"
+                value={dob}
+                onChange={event => {
+                  setDob(event.target.value)
+                }}
+              />
+              Mobile
+              <input
+                className="form-control"
+                placeholder="Mobile"
+                type="string"
+                name="mopbile"
+                value={mobile}
+                onChange={event => {
+                  setMobile(event.target.value)
+                }}
+              />
             </label>
-            
-            Date of Birth
-            <input
-              className="form-control"
-              placeholder="Date of Birth"
-              type="date"
-              name="dob"
-              value={dob}
-              onChange={event => {
-                setDob(event.target.value)
-              }}
-            />
-            Mobile
-            <input
-              className="form-control"
-              placeholder="Mobile"
-              type="string"
-              name="mopbile"
-              value={mobile}
-              onChange={event => {
-                setMobile(event.target.value)
-              }}
-            />
-          </label>
 
-          <label className="justify-left w-100 px-5">
-            {' '}
-            <input className="w-100 btn btn-custom" type="submit" />
-          </label>
-        </form >
-      </Modal >
+            <label className="justify-left w-100 px-5">
+              {' '}
+              <input className="w-100 btn btn-custom" type="submit" />
+            </label>
+          </form >
+        </Modal >
 
-      {/* <section id="about"> */}
+        {/* <section id="about"> */}
         <Container className="container " >
           <Row className="row align-middle ">
             {/* <div className="section-header"> */}
-            
-              <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-              <p style={{fontSize: 12, fontWeight: 800, marginRight: 10, marginTop: 20}}> if you are a Service Provider, please login here or register your salon</p>
-                {(spLoggedIn) ? (
+
+            <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+              <p style={{ fontSize: 12, fontWeight: 800, marginRight: 10, marginTop: 20 }}> if you are a Service Provider, please login here or register your salon</p>
+              {(spLoggedIn) ? (
+                <li>
+                  <button className='nav-links' style={{ color: 'red', border: 'none' }} onClick={handleSpLogout}>Logout</button>
+                </li>
+              )
+                : (
                   <li>
-                    <button className='nav-links' style={{ color: 'red', border: 'none' }} onClick={handleSpLogout}>Logout</button>
+                    <button className='nav-links' style={{ color: 'red', border: 'none' }} onClick={onOpenSpLoginModal}>Login</button>
                   </li>
                 )
-                  : (
-                    <li>
-                      <button className='nav-links' style={{ color: 'red', border: 'none' }} onClick={onOpenSpLoginModal}>Login</button>
-                    </li>
-                  )
-                }
-                <li>
-                  <button className='nav-links' style={{ color: 'red', border: 'none' }} onClick={onOpenSpSignupModal}>Signup</button>
-                </li>
-              </ul>
-              {/* <hr /> */}
+              }
+              <li>
+                <button className='nav-links' style={{ color: 'red', border: 'none' }} onClick={onOpenSpSignupModal}>Signup</button>
+              </li>
+            </ul>
+            {/* <hr /> */}
             {/* </div> */}
           </Row>
         </Container>
-      {/* </section> */}
+        {/* </section> */}
       </div>
     </>
   )

@@ -36,7 +36,4 @@ enum usertype: %i[client sprovider admin]
     'Annonymous'
   end
 
-  # def get_image_url
-  #   Rails.application.routes.url_helpers.url_for(image) if image.attached?
-  # end
 end

@@ -1,4 +1,5 @@
 class UtilsController < ApplicationController
+  # this is not required. can be removed finally
     def usersalon
         @sid= Salon.select("id").where(user_id: params[:id])
     

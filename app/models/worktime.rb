@@ -1,4 +1,5 @@
 class Worktime < ApplicationRecord
+  # this is not required. Can be removed finally
   # belongs_to :salon
 
   validates :weekday,  numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 7 }, presence: true

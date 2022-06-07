@@ -25,10 +25,7 @@ class AppointmentsController < ApplicationController
         render json: Appointment.getSalonDateAppts(params[:salonId], params[:aptdate])
     end
 
-    def getSalonUsersAppts
-        render json: Appointment.getSalonUsersAppts(params[:salonId], params[:suser])
-    end
-        # DELETE /cats/1
+           # DELETE /cats/1
     def destroy
         @appointment.destroy
     end

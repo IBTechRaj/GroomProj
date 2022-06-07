@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect} from 'react'
+import { useState} from 'react'
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -38,30 +38,19 @@ const [service, setService]=useState('Choose Service')
 const [showTime, setShowTime]=useState(false)
 const [apptDate, setApptDate]=useState()
 const [apptTime, setApptTime]=useState('0:00')
-// const [todayAppts, setTodayAppts]=useState([])
-
 let handleServiceChange = (e) => {
   setService(e.target.value)
 }
 
-
-
-
   const setDateShowTime=()=>{
     setShowTime(true)
     setApptDate(startDate)
-    const aptDate=startDate.toLocaleDateString('ko-KR', { year:"numeric", month:"numeric",day:"numeric"}).replace(/\. /g,"-");
-    // const aptDate3=aptDate.replace(".","");
-    const aptDate4=startDate.toUTCString()
-    const jwt = localStorage.getItem('token');
-    console.log('dt fmt', aptDate4)
+    // const aptDate=startDate.toLocaleDateString('ko-KR', { year:"numeric", month:"numeric",day:"numeric"}).replace(/\. /g,"-");
+    // const aptDate4=startDate.toUTCString()
+    // console.log('dt fmt', aptDate4)
     
     
   }
-
-//   useEffect(() => {
-//     setDateShowTime()
-// },[todayAppts])
 
 const createAppointment=(e)=>{
   e.preventDefault()
@@ -82,7 +71,6 @@ const createAppointment=(e)=>{
       .then(response => {
         if (response.status === 201) {
           console.log('Appointment Added')
-          // setServicesBtn(!servicesBtn)
          }
       })
       }
@@ -90,7 +78,6 @@ const createAppointment=(e)=>{
 const [startDate, setStartDate] = useState(new Date());
   return (
     <Grid container spacing={2}>
-      {/* {[lightTheme, darkTheme].map((theme, index) => ( */}
         <Grid item xs={6} >
           <ThemeProvider theme={lightTheme}>
             <Box
@@ -101,16 +88,13 @@ const [startDate, setStartDate] = useState(new Date());
                 gridTemplateColumns: { md: '1fr 1fr' },
                 gap: 2,
               }}
-            >
-              {/* {[ 8].map((elevation) => ( */}
+            > 
                 <Item  elevation={8}>
-                  {/* {`elevation=${8}`} */}
                             <Card 
                             sx={{ minWidth: 275 }}
                             >
                             <CardContent>
                             <Typography variant="h5" sx={{ mb: 1.5 }} 
-                            // component="div"
                             >
                                 Booking Details
                                 </Typography>
@@ -120,18 +104,10 @@ const [startDate, setStartDate] = useState(new Date());
                                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                                Service : 
                                <select onChange={handleServiceChange}> 
-      <option value="choose">  </option>
-            {/* Mapping through each fruit object in our fruits array
-          and returning an option element with the appropriate attributes / values.
-         */}
-      {props.services.map((service) => <option key={service.id} value={service.stype}>{service.stype}</option>)}
-    </select>
-                               {/* {props.services.map((service)=> */}
-                             
-                          
-                       
-                             
-                         
+                                  <option value="choose">  
+                                  </option>
+                                    {props.services.map((service) => <option key={service.id} value={service.stype}>{service.stype}</option>)}
+                                </select>     
                                 </Typography>
                                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                                Client : {props.clientName}

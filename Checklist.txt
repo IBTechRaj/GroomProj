@@ -1,0 +1,5 @@
+
+
+- change Email service provider
+- Appointment scheduling - when Chairs > 1
+- 

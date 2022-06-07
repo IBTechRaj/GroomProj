@@ -9,6 +9,7 @@ https://dakotaleemartinez.com/tutorials/react-redux-auth-for-use-with-rails-api-
 
 To do : 5.2.22
 Change fetch calls to axios in frontend# GroomProj
+Sprovider.js spSalonId not working first time
 
 eval `ssh-agent -s`
 ssh-add ~/.ssh/id_ed25519

@@ -3,14 +3,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-// import { MdLocalCarWash } from 'react-icons/md';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
-// import SendMail from '../SendMail';
-// import SignUp from '../SignUp';
-
 
 const Navbar = ({ loggedIn, setLoggedIn, userId, setUserId, userName, setUserName }) => {
   const [click, setClick] = useState(false);
@@ -42,10 +38,6 @@ const Navbar = ({ loggedIn, setLoggedIn, userId, setUserId, userName, setUserNam
   const [mobile, setMobile] = useState('')
   const [dob, setDob] = useState('')
 
-  // const loginData = {
-  //   "email": email,
-  //   "password": password,
-  // }
 
   const signupData = {
     "email": email,
@@ -58,18 +50,6 @@ const Navbar = ({ loggedIn, setLoggedIn, userId, setUserId, userName, setUserNam
     "usertype": 0
   }
 
-  // const {email, firstname} = {signupData}
-
-  // console.log('sup dat', signupData)
-
-  // const mail_data= {
-  //   mail_subject : "Registration Successful",
-  //   mail_email : email,
-  //   mail_name : firstname,
-  //   mail_message : "Dear {name}, <br/> Thank you for registering. <br/> Team GroomWell"
-  //   }
-   
-
   const handleSubmitSignup = async (event) => {
     event.preventDefault();
     if (password === passwordConfirmation) {
@@ -77,13 +57,13 @@ const Navbar = ({ loggedIn, setLoggedIn, userId, setUserId, userName, setUserNam
         "subject": 'Client Registration Success!',
         "name": firstname,
         "email": email,
-        "message": 
-        "Dear " + firstname 
-        + ",\n\n" 
-        + "Thank you for registering with GroomWell Services. Now you can login and choose from a large number of salons or services\n"
-        + "For any queries please call Customer Care." 
-        + "\n\n" 
-        + "Team GroomWell"
+        "message":
+          "Dear " + firstname
+          + ",\n\n"
+          + "Thank you for registering with GroomWell Services. Now you can login and choose from a large number of salons or services\n"
+          + "For any queries please call Customer Care."
+          + "\n\n"
+          + "Team GroomWell"
       }
       console.log('signing up', signupData)
       fetch("http://localhost:3001/signup", {
@@ -111,7 +91,7 @@ const Navbar = ({ loggedIn, setLoggedIn, userId, setUserId, userName, setUserNam
             localStorage.setItem("token", res.headers.get("Authorization"));
             setLoggedIn(true);
             onCloseSignupModal()
-            
+
             return res.json();
           } else {
             console.log('Error signup')
@@ -119,77 +99,32 @@ const Navbar = ({ loggedIn, setLoggedIn, userId, setUserId, userName, setUserNam
             throw new Error(res);
           }
         })
-        .then((data)=>{
+        .then((data) => {
           setUserId(data.data.id)
           console.log('userId', userId)
           setUserName(data.data.first_name)
-          // let cur_user_type = data.data.usertype
-                   
         })
         .then((json) => console.dir(json))
-        .then(()=>{
-          // <SendMail sendmail_mail={signupData.email} sendmail_name={signupData.first_name} email_subject ={"Registration Successful"} email_message= {"Dear {mailname}, <br/> Thank you for registering. <br/> Team GroomWell"}  />
-          console.log('md',signupData);
+        .then(() => {
+          console.log('md', signupData);
           const jwt = localStorage.getItem('token')
-      const url = 'http://localhost:3001/contacts'
-          
+          const url = 'http://localhost:3001/contacts'
+
           try {
-            const res =  axios.post(url, emailData, { headers: { Authorization: `Bearer ${jwt}` } });
+            const res = axios.post(url, emailData, { headers: { Authorization: `Bearer ${jwt}` } });
             console.log('res', res);
-              }
+          }
           catch (error) {
             console.log('oh, no', error);
           }
-          
+
         })
         .catch((err) => console.error(err));
-
-       
-        // <SendMail sendmail_mail={signupData.email} sendmail_name={signupData.first_name} email_subject ={"Registration Successful"} email_message= {"Dear {mailname}, <br/> Thank you for registering. <br/> Team GroomWell"}  />
-        
-
-         
     }
     else {
       console.log('Passwords should match')
     }
   }
-
-
-  // const handleSubmitLogin = async (event) => {
-  //   event.preventDefault();
-  //   console.log('logging', loginData)
-  //   const res = await axios.post('http://localhost:3001/login ', {
-  //     withCredentials: true,
-  //     headers: {
-  //       "Accept": "application/json",
-  //       "Content-Type": "application/json"
-  //     }
-  //   }, {
-  //     auth: {
-  //       email: email,
-  //       password: password
-  //     }
-  //   }).then(function (response) {
-  //     console.log('Authenticated');
-  //   }).catch(function (error) {
-  //     console.log('Error on Authentication');
-  //   });
-  //   // try {
-  //   //   const res = await axios.post('http://localhost:3001/login ', loginData);
-  //   //   const { token } = res.data;
-  //   //   console.log('res', res.data);
-  //   //   if (token) {
-  //   //     setLoggedIn(true);
-  //   //     onCloseLoginModal()
-  //   //     localStorage.setItem('token', token);
-  //   //     console.log('jwt: ', token)
-  //   //   }
-  //   // }
-  //   // catch (error) {
-  //   //   console.log('Err: ', error);
-  //   // }
-  // }
 
   const handleSubmitLogin = async (event) => {
     event.preventDefault();
@@ -218,30 +153,23 @@ const Navbar = ({ loggedIn, setLoggedIn, userId, setUserId, userName, setUserNam
           return res.text().then((text) => Promise.reject(text));
         }
       })
-      .then((data)=>{
+      .then((data) => {
         setUserId(data.data.id)
         setUserName(data.data.first_name)
         console.log('userId', userId, data.data.id)
         // let cur_user_id= data.data.id
         let cur_user_type = data.data.usertype
-        let cur_user_name=data.data.first_name
+        let cur_user_name = data.data.first_name
         console.log(' type, name', cur_user_type, cur_user_name)
         if (cur_user_type === 'sprovider') {
-          alert ('It seems you are registered as Service Provider. To avail booking services, please register as Client or Call Customer Care')
+          alert('It seems you are registered as Service Provider. To avail booking services, please register as Client or Call Customer Care')
           setLoggedIn(false)
         }
-        
+
       })
       .then((json) => console.dir(json))
       .catch((err) => console.error(err));
   }
-
-
-  // const handleLogout = () => {
-  //   delete axios.defaults.headers.common.Authorization;
-  //   setLoggedIn(false)
-  //   localStorage.removeItem('token');
-  // }
 
   const handleLogout = () => {
     fetch("http://localhost:3001/logout", {
@@ -281,18 +209,14 @@ const Navbar = ({ loggedIn, setLoggedIn, userId, setUserId, userName, setUserNam
     )
   }, []);
 
-// useEffect(()=>{
-//   console.log('ue sup',signupData)
-// }, [])
   return (
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
         <nav className='navbar'>
           <div className='navbar-container container'>
             <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-              {/* <MdLocalCarWash className='navbar-icon' style={{ fontSize: 24, color: '#fb6a33', marginBottom: '12' }} /> */}
-              <img src="assets/SeekPng.com_group-silhouette-png_508662.png" alt="NoImg" style={{width: 50, height: 50}}/>
-              <p style={{ fontSize: 30, fontWeight: 900, color: '#9d55e6'  }}>GroomWell</p>
+              <img src="assets/SeekPng.com_group-silhouette-png_508662.png" alt="NoImg" style={{ width: 50, height: 50 }} />
+              <p style={{ fontSize: 30, fontWeight: 900, color: '#9d55e6' }}>GroomWell</p>
             </Link>
             <div className='menu-icon' onClick={handleClick}>
               {click ? <FaTimes /> : <FaBars />}
@@ -301,7 +225,7 @@ const Navbar = ({ loggedIn, setLoggedIn, userId, setUserId, userName, setUserNam
 
 
               <li className='nav-item'>
-                <Link to='/' className='nav-links'  style={{ color: 'black'}} onClick={closeMobileMenu}>
+                <Link to='/' className='nav-links' style={{ color: 'black' }} onClick={closeMobileMenu}>
                   Home
                 </Link>
               </li>
@@ -309,53 +233,12 @@ const Navbar = ({ loggedIn, setLoggedIn, userId, setUserId, userName, setUserNam
                 <Link
                   to='/services'
                   className='nav-links'
-                  style={{ color: 'black'}}
+                  style={{ color: 'black' }}
                   onClick={closeMobileMenu}
                 >
                   Services
                 </Link>
               </li>
-              {/* <li className='nav-item'>
-                <Link
-                  to='/whowe'
-                  className='nav-links'
-                  onClick={closeMobileMenu}
-                >
-                  Who we
-                </Link>
-              </li>
-              <li className='nav-item'>
-                <Link
-                  to='/pricing'
-                  className='nav-links'
-                  onClick={closeMobileMenu}
-                >
-                  Pricing
-                </Link>
-              </li>
-              <li className='nav-item'>
-                <Link
-                  to='/gallery'
-                  className='nav-links'
-                  onClick={closeMobileMenu}
-                >
-                  Gallery
-                </Link>
-              </li>
-
-              <li className='nav-item'>
-                <Link
-                  to='/contact'
-                  className='nav-links'
-                  onClick={closeMobileMenu}
-                >
-                  Contact
-                </Link>
-              </li> */}
-
-              {/* </ul> */}
-              {/* <ul> */}
-              {/* {(openLogin || openSignup) ? ( */}
               {(loggedIn) ? (
                 <li>
                   <button className='nav-links' style={{ backgroundColor: '#fff', border: 'none', color: 'black' }} onClick={handleLogout}>Logout</button>
@@ -363,19 +246,18 @@ const Navbar = ({ loggedIn, setLoggedIn, userId, setUserId, userName, setUserNam
               )
                 : (
                   <li>
-                    <button className='nav-links' style={{ backgroundColor: '#fff', border: 'none' , color: 'black'}} onClick={onOpenLoginModal}>Login</button>
+                    <button className='nav-links' style={{ backgroundColor: '#fff', border: 'none', color: 'black' }} onClick={onOpenLoginModal}>Login</button>
                   </li>
                 )
               }
               <li>
-                <button className='nav-links' style={{ backgroundColor: '#fff', border: 'none' , color: 'black'}} onClick={onOpenSignupModal}>Signup</button>
+                <button className='nav-links' style={{ backgroundColor: '#fff', border: 'none', color: 'black' }} onClick={onOpenSignupModal}>Signup</button>
               </li>
             </ul>
 
           </div>
         </nav>
       </IconContext.Provider>
-      {/* <SendMail email_data={mail_data} /> */}
       <Modal open={openLogin} onClose={onCloseLoginModal} centre>
         <h2>Login</h2>
         <form onSubmit={handleSubmitLogin}>
@@ -408,17 +290,13 @@ const Navbar = ({ loggedIn, setLoggedIn, userId, setUserId, userName, setUserNam
             <input className="w-100 btn btn-custom" type="submit" />
           </label>
 
-          {/* <div>
-            or <Link to="/signup">Sign up</Link>
-          </div> */}
         </form>
       </Modal>
       <Modal open={openSignup} onClose={onCloseSignupModal} centre>
-        {/* <SignUp /> */}
         <h2>Signup</h2>
         <form onSubmit={handleSubmitSignup}>
           <label className="justify-left w-100 px-5">
-            
+
             Email
             <input
               className="form-control"
@@ -486,7 +364,7 @@ const Navbar = ({ loggedIn, setLoggedIn, userId, setUserId, userName, setUserNam
                 <option value="2" >Others</option>
               </select>
             </label>
-            
+
             Date of Birth
             <input
               className="form-control"

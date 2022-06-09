@@ -7,26 +7,17 @@ import 'react-responsive-modal/styles.css';
 
 function SpLogin(props) {
   const { spLoggedIn, setSpLoggedIn, client, setClient, spId, setSpId, spSalonId, setSpSalonId } = props
-  // console.log('sploginProps', props)
   const jwt = localStorage.getItem('token');
-  //   const salonurl = 'http://localhost:3001/salons';
-  //   const serviceurl = 'http://localhost:3001/services';
-
-
   const [click, setClick] = useState(false);
-  //   const [button, setButton] = useState(true);
-
   const [openSpLogin, setOpenSpLogin] = useState(false);
   const [openSpSignup, setOpenSpSignup] = useState(false);
 
   const onOpenSpLoginModal = () => {
     setOpenSpLogin(true);
-
   }
   const onCloseSpLoginModal = () => setOpenSpLogin(false);
   const onOpenSpSignupModal = () => {
     setOpenSpSignup(true)
-
   }
   const onCloseSpSignupModal = () => setOpenSpSignup(false);
 
@@ -39,11 +30,6 @@ function SpLogin(props) {
   const [mobile, setMobile] = useState('')
   const [dob, setDob] = useState('')
 
-  //   const loginData = {
-  //     "email": email,
-  //     "password": password,
-  //   }
-
   const signupData = {
     "email": email,
     "password": password,
@@ -54,8 +40,6 @@ function SpLogin(props) {
     "date_of_birth": dob,
     "usertype": 1
   }
-
-
 
   const handleSubmitSpSignup = async (event) => {
     event.preventDefault();
@@ -96,7 +80,6 @@ function SpLogin(props) {
         .then((res) => {
           if (res.ok) {
             console.log('res ok', res)
-            // console.log('entries', res.headers.has())
             console.log(res.headers.get("Authorization"));
             localStorage.setItem("token", res.headers.get("Authorization"));
             setSpLoggedIn(true);
@@ -109,8 +92,6 @@ function SpLogin(props) {
             throw new Error(res);
           }
         })
-        // .then((json) => console.dir(json))
-        // .then(res => res.json())
         .then((data) => {
           console.log('d', data)
           let cur_user_id = data.data.id
@@ -127,17 +108,13 @@ function SpLogin(props) {
           catch (error) {
             console.log('oh, no', error);
           }
-
         })
         .catch((err) => console.error(err));
-
     }
     else {
       console.log('Passwords should match')
     }
   }
-
-
 
   const handleSubmitSpLogin = async (event) => {
     event.preventDefault();
@@ -158,7 +135,6 @@ function SpLogin(props) {
       .then((res) => {
         if (res.ok) {
           console.log('token', res.headers.get("Authorization"))
-          // console.log('sp in', ...Object);
           console.log('res', res)
           localStorage.setItem("token", res.headers.get("Authorization"));
           setSpLoggedIn(true);
@@ -187,13 +163,6 @@ function SpLogin(props) {
       .catch((err) => console.error(err));
   }
 
-
-  // const handleLogout = () => {
-  //   delete axios.defaults.headers.common.Authorization;
-  //   setLoggedIn(false)
-  //   localStorage.removeItem('token');
-  // }
-
   const handleSpLogout = () => {
     fetch("http://localhost:3001/logout", {
       method: "delete",
@@ -217,12 +186,9 @@ function SpLogin(props) {
       .catch((err) => console.error(err));
   }
 
-
   return (
     <>
       <div>
-
-        {/* <SendMail email_data={mail_data} /> */}
         <Modal open={openSpLogin} onClose={onCloseSpLoginModal} centre>
           <h2>Salon Owner Login</h2>
           <form onSubmit={handleSubmitSpLogin}>
@@ -254,17 +220,12 @@ function SpLogin(props) {
               {' '}
               <input className="w-100 btn btn-custom" type="submit" />
             </label>
-
-            {/* <div>
-            or <Link to="/signup">Sign up</Link>
-          </div> */}
           </form>
         </Modal>
         <Modal open={openSpSignup} onClose={onCloseSpSignupModal} centre>
           <h2> Salon Owner Signup</h2>
           <form onSubmit={handleSubmitSpSignup}>
             <label className="justify-left w-100 px-5">
-
               Email
               <input
                 className="form-control"
@@ -363,12 +324,8 @@ function SpLogin(props) {
             </label>
           </form >
         </Modal >
-
-        {/* <section id="about"> */}
         <Container className="container " >
           <Row className="row align-middle ">
-            {/* <div className="section-header"> */}
-
             <ul className={click ? 'nav-menu active' : 'nav-menu'}>
               <p style={{ fontSize: 12, fontWeight: 800, marginRight: 10, marginTop: 20 }}> if you are a Service Provider, please login here or register your salon</p>
               {(spLoggedIn) ? (
@@ -386,16 +343,11 @@ function SpLogin(props) {
                 <button className='nav-links' style={{ color: 'red', border: 'none' }} onClick={onOpenSpSignupModal}>Signup</button>
               </li>
             </ul>
-            {/* <hr /> */}
-            {/* </div> */}
           </Row>
         </Container>
-        {/* </section> */}
       </div>
     </>
   )
-
 }
-// });
 
 export default SpLogin

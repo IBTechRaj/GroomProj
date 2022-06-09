@@ -1,26 +1,22 @@
 import { isBefore, setHours, setMinutes, addMinutes } from 'date-fns'
 import { useState, useEffect } from 'react'
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
 import { experimentalStyled as styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import Container from '@mui/material/Container';
 import { makeStyles } from "@material-ui/styles";
 import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   item: {
-    color: '#ccc',
+    color: '#fff',
     justifyContent: "center",
-    textAlign: 'center',
-    marginBottom: 3,
     display: "flex",
     '&:hover': {
       '&>a': {
+        backgroundColor: 'green',
         color: 'red',
       }
     }
@@ -98,82 +94,36 @@ export default function ResponsiveGrid(props) {
     getCurrentAppts()
 
   }, [])
-  var cardStyle = {
-    display: 'block',
-    width: '18vw',
-    transitionDuration: '0.3s',
-    height: '40vw',
-    backgroundColor: 'white',
-    position: 'relative',
-    border: '1',
 
-  }
-
+  // const reserved = ['7:30 AM', '9:00 PM', '9:00 AM', '12:00 PM']
   return (
+    <Box sx={{ width: 300, padding: 0 }} >
+      <Grid container columns={{ xs: 2, sm: 4, md: 6 }} sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+        {/* {Array.from(Array(6)).map((_, index) => ( */}
+        {blocks.map((tmslot, index) => (
+          // (tmslot === '8:00 AM) ? setReserved(false): null
+          <Grid item
+            className=
+            {classes.item} key={index} sx={{ width: 100, height: 31, }}
+          >
+            {/* {tmslot} */}
+            {/* <Item sx={{backgroundColor: (reserved ?  'red' : 'white'),marginLeft: 0}}>{tmslot}</Item> */}
+            <Item className=
+              {classes.item} key={index} sx={{
+                backgroundColor: (reserved.includes(tmslot) ? 'red' : 'white'), marginLeft: 0
 
-    <>
-
-      <Card style={cardStyle}
-        sx={{ maxHeight: 900, border: 1, marginLeft: 10 }}
-      >
-        <CardContent>
-          <Typography gutterBottom variant="subtitle1" component="div" sx={{ textAlign: 'center' }}>
-            Time Slots
-            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Box
-                sx={{
-                  width: 80,
-                  height: 30,
-                  backgroundColor: '#42e3f5',
-                  '&:hover': {
-                    backgroundColor: 'primary.main',
-                    opacity: [0.9, 0.8, 0.7],
-                  },
-                }}
-              />
-              <Box
-                sx={{
-                  width: 80,
-                  height: 30,
-                  border: 1,
-                  marginLeft: 2,
-                  backgroundColor: 'white',
-                  '&:hover': {
-                    backgroundColor: 'primary.main',
-                    opacity: [0.9, 0.8, 0.7],
-                  },
-                }}
-              />
-            </Box>
-          </Typography>
-          <Typography divider component='div' variant='subtitle1' sx={{ textAlign: 'center' }}>Booked : Free</Typography>
-          <Grid container columns={{ xs: 2, sm: 4, md: 6 }} sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
-
-            {blocks.map((tmslot, index) => (
-              <Grid item
-                className=
-                {classes.item} key={index} sx={{ width: 100, height: 31, }}
-              >
-
-                <Item className=
-                  {classes.item} key={index} sx={{
-                    backgroundColor: (reserved.includes(tmslot) ? '#42e3f5' : 'white'), marginLeft: 0
-                  }}
-                  onClick={() => getApptTime(tmslot)
-                  }>
-                  <a href="#">{tmslot}</a></Item>
-              </Grid>
-            ))}
+              }}
+              onClick={() => getApptTime(tmslot)
+              }><a href="#">{tmslot}</a></Item>
           </Grid>
-
-        </CardContent>
-        <CardActions>
-
-
-        </CardActions>
-
-      </Card>
-    </>
+        ))}
+      </Grid>
+    </Box>
   );
 }
 
+
+// }
+
+
+// export default GenSlots

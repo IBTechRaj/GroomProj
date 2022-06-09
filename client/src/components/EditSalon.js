@@ -106,6 +106,18 @@ export default function EditSalon(props) {
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  // disabled
+                  fullWidth
+                  id="email"
+                  label="Email of the Salon"
+                  name="email"
+                  value={salonData.email ?? ""}
+                  onChange={handleInputChange}
+
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
                   required
                   fullWidth
                   id="address1"

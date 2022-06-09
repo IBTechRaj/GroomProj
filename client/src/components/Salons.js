@@ -23,6 +23,7 @@ export default function Salons(props) {
   console.log('sln props', props)
 
   const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
   const [address1, setAddress1] = useState("")
   const [address2, setAddress2] = useState("")
   const [pincode, setPincode] = useState("")
@@ -70,6 +71,7 @@ export default function Salons(props) {
     event.preventDefault();
     const formData = new FormData();
     formData.append('name', name)
+    formData.append('name', email)
     formData.append('address1', address1)
     formData.append('address2', address2)
     formData.append('pincode', pincode)
@@ -133,6 +135,18 @@ export default function Salons(props) {
                   id="name"
                   label="Name of the Salon"
                   value={name}
+                  onChange={event => {
+                    setName(event.target.value)
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="email"
+                  label="Salon Email"
+                  value={email}
                   onChange={event => {
                     setName(event.target.value)
                   }}

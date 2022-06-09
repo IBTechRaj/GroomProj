@@ -8,7 +8,7 @@ import { IconContext } from 'react-icons/lib';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 
-const Navbar = ({ loggedIn, setLoggedIn, userId, setUserId, userName, setUserName }) => {
+const Navbar = ({ loggedIn, setLoggedIn, userId, setUserId, userName, setUserName, userEmail, setUserEmail, userMobile, setUserMobile }) => {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -28,7 +28,6 @@ const Navbar = ({ loggedIn, setLoggedIn, userId, setUserId, userName, setUserNam
 
   }
   const onCloseSignupModal = () => setOpenSignup(false);
-
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
@@ -103,10 +102,12 @@ const Navbar = ({ loggedIn, setLoggedIn, userId, setUserId, userName, setUserNam
           setUserId(data.data.id)
           console.log('userId', userId)
           setUserName(data.data.first_name)
+          setUserEmail(data.data.email)
+          setUserMobile(data.data.mobile)
         })
         .then((json) => console.dir(json))
         .then(() => {
-          console.log('md', signupData);
+          // console.log('md', signupData);
           const jwt = localStorage.getItem('token')
           const url = 'http://localhost:3001/contacts'
 
@@ -156,7 +157,9 @@ const Navbar = ({ loggedIn, setLoggedIn, userId, setUserId, userName, setUserNam
       .then((data) => {
         setUserId(data.data.id)
         setUserName(data.data.first_name)
-        console.log('userId', userId, data.data.id)
+        setUserEmail(data.data.email)
+        setUserMobile(data.data.mobile)
+        console.log('logn', data.data)
         // let cur_user_id= data.data.id
         let cur_user_type = data.data.usertype
         let cur_user_name = data.data.first_name

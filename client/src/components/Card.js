@@ -10,7 +10,6 @@ import axios from 'axios'
 import BookService from './BookService';
 
 export default function OutlineCard(props) {
-  //  console.log('card props', props)
   console.log('card props', props)
   const { salon } = props;
   const { userName } = props
@@ -40,9 +39,6 @@ export default function OutlineCard(props) {
           servicesUrl
         );
         setServices(response.data);
-        console.log('dat', response.data)
-        console.log('services', services)
-
       } catch (err) {
         setError(err.message);
         setServices(null);
@@ -72,8 +68,13 @@ export default function OutlineCard(props) {
               setBooking={setBooking}
               salonId={salon.id}
               salonName={salon.name}
+              salonEmail={salon.email}
+              salonLandline={salon.landline}
+              salonMobile={salon.mobile}
               services={filteredServices(services)}
               clientName={userName}
+              clientEmail={props.userEmail}
+              clientMobile={props.userMobile}
               userId={props.userId}
               setBookingVisible={setBookingVisible}
             />}

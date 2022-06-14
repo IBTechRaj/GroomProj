@@ -71,7 +71,7 @@ export default function Salons(props) {
     event.preventDefault();
     const formData = new FormData();
     formData.append('name', name)
-    formData.append('name', email)
+    formData.append('email', email)
     formData.append('address1', address1)
     formData.append('address2', address2)
     formData.append('pincode', pincode)
@@ -148,7 +148,7 @@ export default function Salons(props) {
                   label="Salon Email"
                   value={email}
                   onChange={event => {
-                    setName(event.target.value)
+                    setEmail(event.target.value)
                   }}
                 />
               </Grid>

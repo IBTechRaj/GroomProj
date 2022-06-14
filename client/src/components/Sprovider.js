@@ -9,8 +9,8 @@ import EditSalon from './EditSalon'
 function Sprovider(props) {
 
   console.log('spro', props)
-  const { spSalonId } = props;
-  const [salonId, setSalonId] = useState(spSalonId)
+  // const { spSalonId } = props;
+  const [salonId, setSalonId] = useState(props.salonId)
   const [showSalons, setShowSalons] = useState(false)
   const [showServices, setShowServices] = useState(false)
   const [editData, setEditData] = useState(false)
@@ -28,7 +28,7 @@ function Sprovider(props) {
 
   return (
     <>
-      setSalonId(spSalonId)
+      {/* {setSalonId(spSalonId)} */}
 
       <section id="about">
         <Container className="container">
@@ -40,7 +40,7 @@ function Sprovider(props) {
 
           <ButtonGroup variant="contained" size="large" aria-label="outlined primary button group">
 
-            {(salonId) ?
+            {(props.salonId) ?
               (<Button
                 type="submit"
                 fullWidth
@@ -67,7 +67,7 @@ function Sprovider(props) {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2, mr: 5, ml: 80 }}
-              disabled={!salonId}
+              // disabled={!salonId}
               onClick={() => { setShowServices(true) }}
             >
               Add/Delete Services
@@ -78,10 +78,10 @@ function Sprovider(props) {
             <Salons spId={props.spId} setSalonId={setSalonId} client={props.client} setClient={props.setClient} onClose={closeChild} />
           }
           {showServices &&
-            <Services salonId={salonId} onClose={closeServices} />
+            <Services salonId={(salonId ? salonId : props.salonId)} onClose={closeServices} />
           }
           {editData &&
-            <EditSalon salonId={salonId} client={props.client} setClient={props.setClient} onClose={closeEdits} />
+            <EditSalon salonId={props.salonId} client={props.client} setClient={props.setClient} onClose={closeEdits} />
           }
 
         </Container>

@@ -8,11 +8,6 @@ import Carousel from './components/Carousel/MyCarousel'
 import Landing from './components/Landing'
 import Sprovider from './components/Sprovider'
 import SpLogin from './components/SpLogin'
-// import SendMail from './components/SendMail';
-
-// const getLoggedStatus = () => {
-//   let loggedIn
-// }
 
 
 function App() {
@@ -35,14 +30,12 @@ function App() {
         userMobile={userMobile} setUserMobile={setUserMobile}
       />
       <Carousel />
-      {/* {loggedIn ? (<Booking />) : (null)} */}
       <SpLogin spLoggedIn={spLoggedIn} setSpLoggedIn={setSpLoggedIn} client={client} setClient={setClient} spId={spId} setSpId={setSpId} spSalonId={spSalonId} setSpSalonId={setSpSalonId} />
       <Switch>
         {client ?
           < Landing userId={userId} userName={userName} userEmail={userEmail} userMobile={userMobile} /> :
-          <Sprovider spLoggedIn={spLoggedIn} setSpLoggedIn={setSpLoggedIn} spId={spId} setSpId={setSpId} client={client} setClient={setClient} spSalonId={spSalonId} />
+          <Sprovider spLoggedIn={spLoggedIn} setSpLoggedIn={setSpLoggedIn} spId={spId} setSpId={setSpId} client={client} setClient={setClient} salonId={spSalonId} />
         }
-        {/* <Route path='/' exact component={Home} /> */}
       </Switch>
       <Footer />
     </Router>

@@ -183,6 +183,7 @@ const Navbar = ({ loggedIn, setLoggedIn, userId, setUserId, userName, setUserNam
       },
     })
       .then((res) => {
+        console.log('lo', res)
         if (res.ok) {
           setLoggedIn(false)
           return res.json();

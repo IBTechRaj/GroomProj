@@ -125,6 +125,7 @@ export default function Elevation(props) {
         try {
           const res = axios.post(url, emailSpData, { headers: { Authorization: `Bearer ${jwt}` } });
           console.log('res', res);
+          props.setBookingVisible(false)
         }
         catch (error) {
           console.log('sp eml err', error);

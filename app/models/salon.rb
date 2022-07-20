@@ -5,7 +5,7 @@ class Salon < ApplicationRecord
   
   has_many :appointments, dependent: :destroy 
   has_many :services, dependent: :destroy
-  has_many :businesses, dependent: :destroy
+  # has_many :businesses, dependent: :destroy
   # has_many :worktimes
 
   has_one_attached :image

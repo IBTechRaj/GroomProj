@@ -1,0 +1,100 @@
+2022-07-20T14:08:41.424010+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `catch'
+2022-07-20T14:08:41.424010+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `block in create_worker'
+2022-07-20T14:08:41.424616+00:00 app[web.1]: I, [2022-07-20T14:08:41.424567 #4]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: a59fa60b-ccac-4d49-8a63-104c22f3dc64) to Async(default) at 2022-07-20 14:49:16 UTC with arguments: #<GlobalID:0x00007f0cd0bd5a40 @uri=#<URI::GID gid://rails-devise-jwt-api/ActiveStorage::Blob/2>>
+2022-07-20T14:08:41.424715+00:00 app[web.1]: I, [2022-07-20T14:08:41.424691 #4]  INFO -- : Retrying ActiveStorage::AnalyzeJob in 2435 seconds, due to a ActiveStorage::IntegrityError.
+2022-07-20T14:14:27.143742+00:00 heroku[web.1]: Idling
+2022-07-20T14:14:27.146394+00:00 heroku[web.1]: State changed from up to down
+2022-07-20T14:14:27.760132+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2022-07-20T14:14:27.806478+00:00 app[web.1]: - Gracefully stopping, waiting for requests to finish
+2022-07-20T14:14:27.939219+00:00 heroku[web.1]: Process exited with status 143
+2022-07-20T15:14:08.112819+00:00 heroku[web.1]: Unidling
+2022-07-20T15:14:08.117438+00:00 heroku[web.1]: State changed from down to starting
+2022-07-20T15:14:10.439090+00:00 heroku[web.1]: Starting process with command `bundle exec puma -t 5:5 -p ${PORT:-3001} -e ${RACK_ENV:-production}`
+2022-07-20T15:14:11.871103+00:00 app[web.1]: Puma starting in single mode...
+2022-07-20T15:14:11.871123+00:00 app[web.1]: * Puma version: 5.6.4 (ruby 3.0.0-p0) ("Birdie's Version")
+2022-07-20T15:14:11.871123+00:00 app[web.1]: *  Min threads: 5
+2022-07-20T15:14:11.871123+00:00 app[web.1]: *  Max threads: 5
+2022-07-20T15:14:11.871124+00:00 app[web.1]: *  Environment: production
+2022-07-20T15:14:11.871124+00:00 app[web.1]: *          PID: 4
+2022-07-20T15:14:14.041920+00:00 app[web.1]: * Listening on http://0.0.0.0:58172
+2022-07-20T15:14:14.047553+00:00 app[web.1]: Use Ctrl-C to stop
+2022-07-20T15:14:14.470452+00:00 heroku[web.1]: State changed from starting to up
+2022-07-20T15:14:15.177984+00:00 heroku[router]: at=info method=OPTIONS path="/login" host=groomserver.herokuapp.com request_id=4ceb9e14-62d6-46a6-8482-3d812c3d6286 fwd="49.204.217.210" dyno=web.1 connect=0ms service=1ms status=200 bytes=299 protocol=https
+2022-07-20T15:14:15.537154+00:00 app[web.1]: I, [2022-07-20T15:14:15.537067 #4]  INFO -- : [4b326e22-dc53-42cd-83ec-1771c467b022] Started POST "/login" for 49.204.217.210 at 2022-07-20 15:14:15 +0000
+2022-07-20T15:14:15.539781+00:00 app[web.1]: I, [2022-07-20T15:14:15.539715 #4]  INFO -- : [4b326e22-dc53-42cd-83ec-1771c467b022] Processing by Users::SessionsController#create as */*
+2022-07-20T15:14:15.539818+00:00 app[web.1]: I, [2022-07-20T15:14:15.539794 #4]  INFO -- : [4b326e22-dc53-42cd-83ec-1771c467b022]   Parameters: {"user"=>{"email"=>"raj_shk@rediffmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"raj_shk@rediffmail.com", "password"=>"[FILTERED]"}}}
+2022-07-20T15:14:15.816455+00:00 heroku[router]: at=info method=POST path="/login" host=groomserver.herokuapp.com request_id=4b326e22-dc53-42cd-83ec-1771c467b022 fwd="49.204.217.210" dyno=web.1 connect=0ms service=342ms status=200 bytes=1202 protocol=https
+2022-07-20T15:14:15.877230+00:00 app[web.1]: I, [2022-07-20T15:14:15.877137 #4]  INFO -- : [4b326e22-dc53-42cd-83ec-1771c467b022] Completed 200 OK in 337ms (Views: 0.4ms | ActiveRecord: 44.0ms | Allocations: 18862)
+2022-07-20T15:14:19.765103+00:00 heroku[router]: at=info method=GET path="/2" host=groomserver.herokuapp.com request_id=01493e8c-862a-4cdb-98ec-5c1200f29d98 fwd="49.204.217.210" dyno=web.1 connect=0ms service=6ms status=404 bytes=375 protocol=https
+2022-07-20T15:14:19.825855+00:00 app[web.1]: I, [2022-07-20T15:14:19.825778 #4]  INFO -- : [01493e8c-862a-4cdb-98ec-5c1200f29d98] Started GET "/2" for 49.204.217.210 at 2022-07-20 15:14:19 +0000
+2022-07-20T15:14:19.826256+00:00 app[web.1]: F, [2022-07-20T15:14:19.826222 #4] FATAL -- : [01493e8c-862a-4cdb-98ec-5c1200f29d98]
+2022-07-20T15:14:19.826257+00:00 app[web.1]: [01493e8c-862a-4cdb-98ec-5c1200f29d98] ActionController::RoutingError (No route matches [GET] "/2"):
+2022-07-20T15:14:19.826257+00:00 app[web.1]: [01493e8c-862a-4cdb-98ec-5c1200f29d98]
+2022-07-20T15:50:01.118373+00:00 heroku[web.1]: Idling
+2022-07-20T15:50:01.126168+00:00 heroku[web.1]: State changed from up to down
+2022-07-20T15:50:01.756956+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2022-07-20T15:50:01.868163+00:00 app[web.1]: - Gracefully stopping, waiting for requests to finish
+2022-07-20T15:50:01.999417+00:00 heroku[web.1]: Process exited with status 143
+2022-07-21T08:01:18.786450+00:00 heroku[web.1]: Unidling
+2022-07-21T08:01:18.799794+00:00 heroku[web.1]: State changed from down to starting
+2022-07-21T08:01:22.113020+00:00 heroku[web.1]: Starting process with command `bundle exec puma -t 5:5 -p ${PORT:-3001} -e ${RACK_ENV:-production}`
+2022-07-21T08:01:23.293203+00:00 app[web.1]: Puma starting in single mode...
+2022-07-21T08:01:23.293220+00:00 app[web.1]: * Puma version: 5.6.4 (ruby 3.0.0-p0) ("Birdie's Version")
+2022-07-21T08:01:23.293220+00:00 app[web.1]: *  Min threads: 5
+2022-07-21T08:01:23.293221+00:00 app[web.1]: *  Max threads: 5
+2022-07-21T08:01:23.293221+00:00 app[web.1]: *  Environment: production
+2022-07-21T08:01:23.293221+00:00 app[web.1]: *          PID: 4
+2022-07-21T08:01:25.370173+00:00 app[web.1]: * Listening on http://0.0.0.0:39009
+2022-07-21T08:01:25.375249+00:00 app[web.1]: Use Ctrl-C to stop
+2022-07-21T08:01:25.854957+00:00 heroku[web.1]: State changed from starting to up
+2022-07-21T08:01:26.866105+00:00 app[web.1]: I, [2022-07-21T08:01:26.866030 #4]  INFO -- : [decf8459-37f6-4802-9d1b-b080821d5cd1] Started GET "/salons" for 49.204.217.210 at 2022-07-21 08:01:26 +0000
+2022-07-21T08:01:26.867486+00:00 app[web.1]: I, [2022-07-21T08:01:26.867442 #4]  INFO -- : [decf8459-37f6-4802-9d1b-b080821d5cd1] Processing by SalonsController#index as HTML
+2022-07-21T08:01:27.038708+00:00 app[web.1]: I, [2022-07-21T08:01:27.038628 #4]  INFO -- : [decf8459-37f6-4802-9d1b-b080821d5cd1] Completed 200 OK in 171ms (Views: 0.6ms | ActiveRecord: 95.0ms | Allocations: 24501)
+2022-07-21T08:01:27.039885+00:00 heroku[router]: at=info method=GET path="/salons" host=groomserver.herokuapp.com request_id=decf8459-37f6-4802-9d1b-b080821d5cd1 fwd="49.204.217.210" dyno=web.1 connect=0ms service=179ms status=304 bytes=629 protocol=https
+2022-07-21T08:01:27.288632+00:00 app[web.1]: I, [2022-07-21T08:01:27.288571 #4]  INFO -- : [05aa48d0-90d7-4297-b26f-2c6c10b9a09d] Started GET "/services" for 49.204.217.210 at 2022-07-21 08:01:27 +0000
+2022-07-21T08:01:27.289290+00:00 app[web.1]: I, [2022-07-21T08:01:27.289248 #4]  INFO -- : [05aa48d0-90d7-4297-b26f-2c6c10b9a09d] Processing by ServicesController#index as HTML
+2022-07-21T08:01:27.293985+00:00 app[web.1]: I, [2022-07-21T08:01:27.293938 #4]  INFO -- : [05aa48d0-90d7-4297-b26f-2c6c10b9a09d] Completed 200 OK in 5ms (Views: 1.5ms | ActiveRecord: 2.5ms | Allocations: 438)
+2022-07-21T08:01:27.294934+00:00 heroku[router]: at=info method=GET path="/services" host=groomserver.herokuapp.com request_id=05aa48d0-90d7-4297-b26f-2c6c10b9a09d fwd="49.204.217.210" dyno=web.1 connect=0ms service=7ms status=304 bytes=629 protocol=https
+2022-07-21T08:35:39.725339+00:00 heroku[web.1]: Idling
+2022-07-21T08:35:39.727708+00:00 heroku[web.1]: State changed from up to down
+2022-07-21T08:35:42.217783+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2022-07-21T08:35:42.304321+00:00 app[web.1]: - Gracefully stopping, waiting for requests to finish
+2022-07-21T08:35:42.468938+00:00 heroku[web.1]: Process exited with status 143
+2022-07-21T10:00:12.720134+00:00 app[api]: Starting process with command `bin/rails console` by user krs30018@gmail.com
+2022-07-21T10:00:15.470474+00:00 heroku[run.9655]: Awaiting client
+2022-07-21T10:00:15.487900+00:00 heroku[run.9655]: Starting process with command `bin/rails console`
+2022-07-21T10:00:15.547564+00:00 heroku[run.9655]: State changed from starting to up
+2022-07-21T10:09:40.662713+00:00 heroku[web.1]: Unidling
+2022-07-21T10:09:40.667020+00:00 heroku[web.1]: State changed from down to starting
+2022-07-21T10:09:43.086937+00:00 heroku[web.1]: Starting process with command `bundle exec puma -t 5:5 -p ${PORT:-3001} -e ${RACK_ENV:-production}`
+2022-07-21T10:09:44.376024+00:00 app[web.1]: Puma starting in single mode...
+2022-07-21T10:09:44.376048+00:00 app[web.1]: * Puma version: 5.6.4 (ruby 3.0.0-p0) ("Birdie's Version")
+2022-07-21T10:09:44.376049+00:00 app[web.1]: *  Min threads: 5
+2022-07-21T10:09:44.376049+00:00 app[web.1]: *  Max threads: 5
+2022-07-21T10:09:44.376049+00:00 app[web.1]: *  Environment: production
+2022-07-21T10:09:44.376050+00:00 app[web.1]: *          PID: 4
+2022-07-21T10:09:46.529520+00:00 app[web.1]: * Listening on http://0.0.0.0:42689
+2022-07-21T10:09:46.540228+00:00 app[web.1]: Use Ctrl-C to stop
+2022-07-21T10:09:46.558790+00:00 heroku[web.1]: State changed from starting to up
+2022-07-21T10:09:47.723573+00:00 app[web.1]: I, [2022-07-21T10:09:47.723496 #4]  INFO -- : [eee9fb18-49ca-4870-92e4-c35171361de6] Started GET "/salons" for 49.204.217.210 at 2022-07-21 10:09:47 +0000
+2022-07-21T10:09:47.724981+00:00 app[web.1]: I, [2022-07-21T10:09:47.724936 #4]  INFO -- : [eee9fb18-49ca-4870-92e4-c35171361de6] Processing by SalonsController#index as HTML
+2022-07-21T10:09:47.756242+00:00 app[web.1]: I, [2022-07-21T10:09:47.756186 #4]  INFO -- : [eee9fb18-49ca-4870-92e4-c35171361de6] Completed 200 OK in 31ms (Views: 0.2ms | ActiveRecord: 10.6ms | Allocations: 7078)
+2022-07-21T10:09:47.756262+00:00 heroku[router]: at=info method=GET path="/salons" host=groomserver.herokuapp.com request_id=eee9fb18-49ca-4870-92e4-c35171361de6 fwd="49.204.217.210" dyno=web.1 connect=0ms service=39ms status=200 bytes=706 protocol=https
+2022-07-21T10:15:33.955302+00:00 heroku[router]: at=info method=OPTIONS path="/login" host=groomserver.herokuapp.com request_id=82aab87f-e512-494d-b091-6bec97d61e67 fwd="49.204.217.210" dyno=web.1 connect=0ms service=1ms status=200 bytes=299 protocol=https
+2022-07-21T10:15:34.189235+00:00 app[web.1]: I, [2022-07-21T10:15:34.189167 #4]  INFO -- : [98090ca1-0bd3-4858-96e6-b1d3617e5752] Started POST "/login" for 49.204.217.210 at 2022-07-21 10:15:34 +0000
+2022-07-21T10:15:34.190239+00:00 app[web.1]: I, [2022-07-21T10:15:34.190194 #4]  INFO -- : [98090ca1-0bd3-4858-96e6-b1d3617e5752] Processing by Users::SessionsController#create as */*
+2022-07-21T10:15:34.190278+00:00 app[web.1]: I, [2022-07-21T10:15:34.190256 #4]  INFO -- : [98090ca1-0bd3-4858-96e6-b1d3617e5752]   Parameters: {"user"=>{"email"=>"raj_shk@rediffmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"raj_shk@rediffmail.com", "password"=>"[FILTERED]"}}}
+2022-07-21T10:15:34.469232+00:00 heroku[router]: at=info method=POST path="/login" host=groomserver.herokuapp.com request_id=98090ca1-0bd3-4858-96e6-b1d3617e5752 fwd="49.204.217.210" dyno=web.1 connect=0ms service=283ms status=200 bytes=1201 protocol=https
+2022-07-21T10:15:34.470528+00:00 app[web.1]: I, [2022-07-21T10:15:34.470440 #4]  INFO -- : [98090ca1-0bd3-4858-96e6-b1d3617e5752] Completed 200 OK in 280ms (Views: 0.5ms | ActiveRecord: 8.7ms | Allocations: 12136)
+2022-07-21T10:16:50.469250+00:00 heroku[router]: at=info method=OPTIONS path="/salons" host=groomserver.herokuapp.com request_id=c140e570-b70e-4952-92f0-df3c23ced91b fwd="49.204.217.210" dyno=web.1 connect=0ms service=0ms status=200 bytes=300 protocol=https
+2022-07-21T10:16:52.546352+00:00 app[web.1]: I, [2022-07-21T10:16:52.546282 #4]  INFO -- : [c7932fb9-12f6-4c86-8417-8fe057be0627] Started POST "/salons" for 49.204.217.210 at 2022-07-21 10:16:52 +0000
+2022-07-21T10:16:52.556305+00:00 app[web.1]: I, [2022-07-21T10:16:52.556209 #4]  INFO -- : [c7932fb9-12f6-4c86-8417-8fe057be0627] Processing by SalonsController#create as JSON
+2022-07-21T10:16:52.556400+00:00 app[web.1]: I, [2022-07-21T10:16:52.556368 #4]  INFO -- : [c7932fb9-12f6-4c86-8417-8fe057be0627]   Parameters: {"name"=>"Raj hills", "email"=>"raj_shk@rediffmail.com", "address1"=>"Road No0.1", "address2"=>"Gautam Nagar", "pincode"=>"500047", "city"=>"Hyderabad", "landline"=>"", "mobile"=>"9000000004", "gstin"=>"Pnrte9898912", "pan"=>"acswx4545c", "chairs"=>"1", "user_id"=>"3", "weekday"=>"1", "opens"=>"06:49", "closes"=>"17:48", "image"=>#<ActionDispatch::Http::UploadedFile:0x0000559f8132ce60 @tempfile=#<Tempfile:/tmp/RackMultipart20220721-4-yjc9x.jpg>, @original_filename="david-marcu-78A265wPiO4-unsplash.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"david-marcu-78A265wPiO4-unsplash.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+2022-07-21T10:16:53.386243+00:00 app[web.1]: I, [2022-07-21T10:16:53.386150 #4]  INFO -- : [c7932fb9-12f6-4c86-8417-8fe057be0627] [36m  Cloudinary Storage (768.2ms) [0m[32mUploaded file to key: mivhna56yc8s17wxk4ac71cuv9h1 (checksum: JWnINsxmxzeIR4BvEwuJ/g==)[0m
+2022-07-21T10:16:53.387157+00:00 app[web.1]: I, [2022-07-21T10:16:53.387099 #4]  INFO -- : [c7932fb9-12f6-4c86-8417-8fe057be0627] [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 2f02bb5d-5d10-4fef-9c5c-197f665721d2) to Async(default) with arguments: #<GlobalID:0x0000559f7e7ab4d0 @uri=#<URI::GID gid://rails-devise-jwt-api/ActiveStorage::Blob/35>>
+2022-07-21T10:16:53.390445+00:00 app[web.1]: I, [2022-07-21T10:16:53.390401 #4]  INFO -- : [c7932fb9-12f6-4c86-8417-8fe057be0627] Completed 201 Created in 834ms (Views: 0.5ms | ActiveRecord: 20.5ms | Allocations: 216425)
+2022-07-21T10:16:53.391451+00:00 heroku[router]: at=info method=POST path="/salons" host=groomserver.herokuapp.com request_id=c7932fb9-12f6-4c86-8417-8fe057be0627 fwd="49.204.217.210" dyno=web.1 connect=0ms service=2686ms status=201 bytes=1341 protocol=https
+2022-07-21T10:16:53.415271+00:00 app[web.1]: I, [2022-07-21T10:16:53.415198 #4]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [2f02bb5d-5d10-4fef-9c5c-197f665721d2] Performing ActiveStorage::AnalyzeJob (Job ID: 2f02bb5d-5d10-4fef-9c5c-197f665721d2) from Async(default) enqueued at 2022-07-21T10:16:53Z with arguments: #<GlobalID:0x0000559f7e17a3b8 @uri=#<URI::GID gid://rails-devise-jwt-api/ActiveStorage::Blob/35>>
+2022-07-21T10:16:53.499510+00:00 app[web.1]: I, [2022-07-21T10:16:53.499432 #4]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [2f02bb5d-5d10-4fef-9c5c-197f665721d2] [36m  Cloudinary Storage (83.0ms) [0m[34mDownloaded file from key: mivhna56yc8s17wxk4ac71cuv9h1[0m
+2022-07-21T10:16:53.501843+00:00 app[web.1]: I, [2022-07-21T10:16:53.501782 #4]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [2f02bb5d-5d10-4fef-9c5c-197f665721d2] Skipping image analysis because the mini_magick gem isn't installed
+2022-07-21T10:16:53.506062+00:00 app[web.1]: I, [2022-07-21T10:16:53.505979 #4]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [2f02bb5d-5d10-4fef-9c5c-197f665721d2] Performed ActiveStorage::AnalyzeJob (Job ID: 2f02bb5d-5d10-4fef-9c5c-197f665721d2) from Async(default) in 90.59ms

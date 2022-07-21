@@ -1,0 +1,100 @@
+2022-07-20T13:28:13.231128+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/timer_set.rb:165:in `block (2 levels) in process_tasks'
+2022-07-20T13:28:13.231128+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `run_task'
+2022-07-20T13:28:13.231129+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:343:in `block (3 levels) in create_worker'
+2022-07-20T13:28:13.231130+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `loop'
+2022-07-20T13:28:13.231130+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block (2 levels) in create_worker'
+2022-07-20T13:28:13.231131+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `catch'
+2022-07-20T13:28:13.231131+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `block in create_worker'
+2022-07-20T13:28:13.231879+00:00 app[web.1]: I, [2022-07-20T13:28:13.231832 #4]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: a59fa60b-ccac-4d49-8a63-104c22f3dc64) to Async(default) at 2022-07-20 13:29:46 UTC with arguments: #<GlobalID:0x00007f0cd0706fc8 @uri=#<URI::GID gid://rails-devise-jwt-api/ActiveStorage::Blob/2>>
+2022-07-20T13:28:13.231994+00:00 app[web.1]: I, [2022-07-20T13:28:13.231944 #4]  INFO -- : Retrying ActiveStorage::AnalyzeJob in 93 seconds, due to a ActiveStorage::IntegrityError.
+2022-07-20T13:29:07.733180+00:00 heroku[router]: at=info method=OPTIONS path="/services" host=groomserver.herokuapp.com request_id=cbc9256d-5253-4b07-823a-6e492cc09040 fwd="49.204.217.210" dyno=web.1 connect=0ms service=1ms status=200 bytes=300 protocol=https
+2022-07-20T13:29:07.965489+00:00 app[web.1]: I, [2022-07-20T13:29:07.965424 #4]  INFO -- : [739b6db6-5383-4e24-9f96-2fde1b9c7fb1] Started GET "/services" for 49.204.217.210 at 2022-07-20 13:29:07 +0000
+2022-07-20T13:29:07.966257+00:00 app[web.1]: I, [2022-07-20T13:29:07.966203 #4]  INFO -- : [739b6db6-5383-4e24-9f96-2fde1b9c7fb1] Processing by ServicesController#index as HTML
+2022-07-20T13:29:07.969894+00:00 app[web.1]: I, [2022-07-20T13:29:07.969851 #4]  INFO -- : [739b6db6-5383-4e24-9f96-2fde1b9c7fb1] Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 1.4ms | Allocations: 457)
+2022-07-20T13:29:07.970166+00:00 heroku[router]: at=info method=GET path="/services" host=groomserver.herokuapp.com request_id=739b6db6-5383-4e24-9f96-2fde1b9c7fb1 fwd="49.204.217.210" dyno=web.1 connect=0ms service=6ms status=200 bytes=706 protocol=https
+2022-07-20T13:29:17.262569+00:00 heroku[router]: at=info method=OPTIONS path="/services" host=groomserver.herokuapp.com request_id=7cd47a17-dcc1-425c-b2a3-09008c832132 fwd="49.204.217.210" dyno=web.1 connect=0ms service=1ms status=200 bytes=313 protocol=https
+2022-07-20T13:29:17.512201+00:00 app[web.1]: I, [2022-07-20T13:29:17.512131 #4]  INFO -- : [b47964d3-b782-43f6-ada7-918a47ef1cca] Started POST "/services" for 49.204.217.210 at 2022-07-20 13:29:17 +0000
+2022-07-20T13:29:17.523595+00:00 app[web.1]: I, [2022-07-20T13:29:17.523542 #4]  INFO -- : [b47964d3-b782-43f6-ada7-918a47ef1cca] Processing by ServicesController#create as HTML
+2022-07-20T13:29:17.523631+00:00 app[web.1]: I, [2022-07-20T13:29:17.523606 #4]  INFO -- : [b47964d3-b782-43f6-ada7-918a47ef1cca]   Parameters: {"stype"=>"Hair Cut", "sduration"=>"30", "sprice"=>"0800", "service"=>{"stype"=>"Hair Cut", "sduration"=>"30", "sprice"=>"0800"}}
+2022-07-20T13:29:17.533724+00:00 app[web.1]: I, [2022-07-20T13:29:17.533672 #4]  INFO -- : [b47964d3-b782-43f6-ada7-918a47ef1cca] Completed 422 Unprocessable Entity in 10ms (ActiveRecord: 9.4ms | Allocations: 4036)
+2022-07-20T13:29:17.534095+00:00 app[web.1]: F, [2022-07-20T13:29:17.534063 #4] FATAL -- : [b47964d3-b782-43f6-ada7-918a47ef1cca]
+2022-07-20T13:29:17.534096+00:00 app[web.1]: [b47964d3-b782-43f6-ada7-918a47ef1cca] ActiveRecord::RecordInvalid (Validation failed: Salon must exist):
+2022-07-20T13:29:17.534097+00:00 app[web.1]: [b47964d3-b782-43f6-ada7-918a47ef1cca]
+2022-07-20T13:29:17.534097+00:00 app[web.1]: [b47964d3-b782-43f6-ada7-918a47ef1cca] app/controllers/services_controller.rb:12:in `create'
+2022-07-20T13:29:17.534116+00:00 heroku[router]: at=info method=POST path="/services" host=groomserver.herokuapp.com request_id=b47964d3-b782-43f6-ada7-918a47ef1cca fwd="49.204.217.210" dyno=web.1 connect=0ms service=23ms status=422 bytes=386 protocol=https
+2022-07-20T13:29:45.802456+00:00 app[web.1]: I, [2022-07-20T13:29:45.802390 #4]  INFO -- : [f02cb7f4-4268-418f-9d06-f5f7c4ce319c] Started POST "/services" for 49.204.217.210 at 2022-07-20 13:29:45 +0000
+2022-07-20T13:29:45.803061+00:00 app[web.1]: I, [2022-07-20T13:29:45.803019 #4]  INFO -- : [f02cb7f4-4268-418f-9d06-f5f7c4ce319c] Processing by ServicesController#create as HTML
+2022-07-20T13:29:45.803106+00:00 app[web.1]: I, [2022-07-20T13:29:45.803077 #4]  INFO -- : [f02cb7f4-4268-418f-9d06-f5f7c4ce319c]   Parameters: {"stype"=>"Nail Polish", "sduration"=>"15", "sprice"=>"0100", "service"=>{"stype"=>"Nail Polish", "sduration"=>"15", "sprice"=>"0100"}}
+2022-07-20T13:29:45.805928+00:00 app[web.1]: I, [2022-07-20T13:29:45.805879 #4]  INFO -- : [f02cb7f4-4268-418f-9d06-f5f7c4ce319c] Completed 422 Unprocessable Entity in 3ms (ActiveRecord: 0.0ms | Allocations: 808)
+2022-07-20T13:29:45.806467+00:00 app[web.1]: F, [2022-07-20T13:29:45.806438 #4] FATAL -- : [f02cb7f4-4268-418f-9d06-f5f7c4ce319c]
+2022-07-20T13:29:45.806467+00:00 app[web.1]: [f02cb7f4-4268-418f-9d06-f5f7c4ce319c] ActiveRecord::RecordInvalid (Validation failed: Salon must exist):
+2022-07-20T13:29:45.806468+00:00 app[web.1]: [f02cb7f4-4268-418f-9d06-f5f7c4ce319c]
+2022-07-20T13:29:45.806468+00:00 app[web.1]: [f02cb7f4-4268-418f-9d06-f5f7c4ce319c] app/controllers/services_controller.rb:12:in `create'
+2022-07-20T13:29:45.806528+00:00 heroku[router]: at=info method=POST path="/services" host=groomserver.herokuapp.com request_id=f02cb7f4-4268-418f-9d06-f5f7c4ce319c fwd="49.204.217.210" dyno=web.1 connect=0ms service=5ms status=422 bytes=386 protocol=https
+2022-07-20T13:29:46.639434+00:00 app[web.1]: I, [2022-07-20T13:29:46.639345 #4]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [a59fa60b-ccac-4d49-8a63-104c22f3dc64] Performing ActiveStorage::AnalyzeJob (Job ID: a59fa60b-ccac-4d49-8a63-104c22f3dc64) from Async(default) enqueued at 2022-07-20T13:28:13Z with arguments: #<GlobalID:0x00007f0cd07f3df0 @uri=#<URI::GID gid://rails-devise-jwt-api/ActiveStorage::Blob/2>>
+2022-07-20T13:29:46.649902+00:00 app[web.1]: I, [2022-07-20T13:29:46.649834 #4]  INFO -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [a59fa60b-ccac-4d49-8a63-104c22f3dc64] [36m  Cloudinary Storage (9.7ms) [0m[34mDownloaded file from key: 48sjxkswh8encpssm9745mq3heho[0m
+2022-07-20T13:29:46.655008+00:00 app[web.1]: E, [2022-07-20T13:29:46.654935 #4] ERROR -- : [ActiveJob] [ActiveStorage::AnalyzeJob] [a59fa60b-ccac-4d49-8a63-104c22f3dc64] Error performing ActiveStorage::AnalyzeJob (Job ID: a59fa60b-ccac-4d49-8a63-104c22f3dc64) from Async(default) in 15.43ms: NameError (uninitialized constant ActiveStorage::Analyzer::ImageAnalyzer::MiniMagick
+2022-07-20T13:29:46.655008+00:00 app[web.1]: Did you mean?  MiniMime):
+2022-07-20T13:29:46.655021+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activestorage-6.1.5/lib/active_storage/analyzer/image_analyzer.rb:46:in `rescue in read_image'
+2022-07-20T13:29:46.655021+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activestorage-6.1.5/lib/active_storage/analyzer/image_analyzer.rb:31:in `read_image'
+2022-07-20T13:29:46.655022+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activestorage-6.1.5/lib/active_storage/analyzer/image_analyzer.rb:21:in `metadata'
+2022-07-20T13:29:46.655022+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activestorage-6.1.5/app/models/active_storage/blob/analyzable.rb:51:in `extract_metadata_via_analyzer'
+2022-07-20T13:29:46.655022+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activestorage-6.1.5/app/models/active_storage/blob/analyzable.rb:29:in `analyze'
+2022-07-20T13:29:46.655032+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activestorage-6.1.5/app/jobs/active_storage/analyze_job.rb:11:in `perform'
+2022-07-20T13:29:46.655032+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activejob-6.1.5/lib/active_job/execution.rb:48:in `block in perform_now'
+2022-07-20T13:29:46.655033+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/callbacks.rb:117:in `block in run_callbacks'
+2022-07-20T13:29:46.655033+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/i18n-1.10.0/lib/i18n.rb:328:in `with_locale'
+2022-07-20T13:29:46.655033+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activejob-6.1.5/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+2022-07-20T13:29:46.655034+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/callbacks.rb:126:in `instance_exec'
+2022-07-20T13:29:46.655034+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/callbacks.rb:126:in `block in run_callbacks'
+2022-07-20T13:29:46.655034+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/core_ext/time/zones.rb:66:in `use_zone'
+2022-07-20T13:29:46.655035+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activejob-6.1.5/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+2022-07-20T13:29:46.655035+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/callbacks.rb:126:in `instance_exec'
+2022-07-20T13:29:46.655035+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/callbacks.rb:126:in `block in run_callbacks'
+2022-07-20T13:29:46.655035+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activejob-6.1.5/lib/active_job/instrumentation.rb:21:in `block in instrument'
+2022-07-20T13:29:46.655040+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/notifications.rb:203:in `block in instrument'
+2022-07-20T13:29:46.655041+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+2022-07-20T13:29:46.655041+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/notifications.rb:203:in `instrument'
+2022-07-20T13:29:46.655041+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activejob-6.1.5/lib/active_job/instrumentation.rb:31:in `instrument'
+2022-07-20T13:29:46.655041+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activejob-6.1.5/lib/active_job/instrumentation.rb:14:in `block (2 levels) in <module:Instrumentation>'
+2022-07-20T13:29:46.655041+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/callbacks.rb:126:in `instance_exec'
+2022-07-20T13:29:46.655041+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/callbacks.rb:126:in `block in run_callbacks'
+2022-07-20T13:29:46.655041+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activejob-6.1.5/lib/active_job/logging.rb:22:in `block in tag_logger'
+2022-07-20T13:29:46.655042+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/tagged_logging.rb:99:in `block in tagged'
+2022-07-20T13:29:46.655042+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/tagged_logging.rb:37:in `tagged'
+2022-07-20T13:29:46.655042+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/tagged_logging.rb:99:in `tagged'
+2022-07-20T13:29:46.655042+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activejob-6.1.5/lib/active_job/logging.rb:22:in `tag_logger'
+2022-07-20T13:29:46.655042+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activejob-6.1.5/lib/active_job/logging.rb:15:in `block (2 levels) in <module:Logging>'
+2022-07-20T13:29:46.655042+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/callbacks.rb:126:in `instance_exec'
+2022-07-20T13:29:46.655043+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/callbacks.rb:126:in `block in run_callbacks'
+2022-07-20T13:29:46.655045+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/callbacks.rb:137:in `run_callbacks'
+2022-07-20T13:29:46.655045+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activejob-6.1.5/lib/active_job/execution.rb:47:in `perform_now'
+2022-07-20T13:29:46.655046+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activejob-6.1.5/lib/active_job/execution.rb:25:in `block in execute'
+2022-07-20T13:29:46.655046+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/callbacks.rb:117:in `block in run_callbacks'
+2022-07-20T13:29:46.655046+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activejob-6.1.5/lib/active_job/railtie.rb:47:in `block (4 levels) in <class:Railtie>'
+2022-07-20T13:29:46.655046+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/execution_wrapper.rb:91:in `wrap'
+2022-07-20T13:29:46.655046+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/reloader.rb:72:in `block in wrap'
+2022-07-20T13:29:46.655046+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/execution_wrapper.rb:91:in `wrap'
+2022-07-20T13:29:46.655046+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/reloader.rb:71:in `wrap'
+2022-07-20T13:29:46.655046+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activejob-6.1.5/lib/active_job/railtie.rb:46:in `block (3 levels) in <class:Railtie>'
+2022-07-20T13:29:46.655047+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/callbacks.rb:126:in `instance_exec'
+2022-07-20T13:29:46.655047+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/callbacks.rb:126:in `block in run_callbacks'
+2022-07-20T13:29:46.655047+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activesupport-6.1.5/lib/active_support/callbacks.rb:137:in `run_callbacks'
+2022-07-20T13:29:46.655047+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activejob-6.1.5/lib/active_job/execution.rb:23:in `execute'
+2022-07-20T13:29:46.655047+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/activejob-6.1.5/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+2022-07-20T13:29:46.655052+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:24:in `block in execute'
+2022-07-20T13:29:46.655052+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:47:in `block in synchronize'
+2022-07-20T13:29:46.655052+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:47:in `synchronize'
+2022-07-20T13:29:46.655052+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/synchronization/mutex_lockable_object.rb:47:in `synchronize'
+2022-07-20T13:29:46.655053+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/safe_task_executor.rb:22:in `execute'
+2022-07-20T13:29:46.655053+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/ivar.rb:169:in `safe_execute'
+2022-07-20T13:29:46.655053+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/scheduled_task.rb:298:in `process_task'
+2022-07-20T13:29:46.655053+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/timer_set.rb:165:in `block (2 levels) in process_tasks'
+2022-07-20T13:29:46.655053+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `run_task'
+2022-07-20T13:29:46.655054+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:343:in `block (3 levels) in create_worker'
+2022-07-20T13:29:46.655054+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `loop'
+2022-07-20T13:29:46.655054+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block (2 levels) in create_worker'
+2022-07-20T13:29:46.655054+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `catch'
+2022-07-20T13:29:46.655054+00:00 app[web.1]: /app/vendor/bundle/ruby/3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `block in create_worker'
+2022-07-20T13:29:46.655923+00:00 app[web.1]: I, [2022-07-20T13:29:46.655873 #4]  INFO -- : [ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: a59fa60b-ccac-4d49-8a63-104c22f3dc64) to Async(default) at 2022-07-20 13:34:40 UTC with arguments: #<GlobalID:0x00007f0cd08827d0 @uri=#<URI::GID gid://rails-devise-jwt-api/ActiveStorage::Blob/2>>
+2022-07-20T13:29:46.656037+00:00 app[web.1]: I, [2022-07-20T13:29:46.656011 #4]  INFO -- : Retrying ActiveStorage::AnalyzeJob in 293 seconds, due to a ActiveStorage::IntegrityError.

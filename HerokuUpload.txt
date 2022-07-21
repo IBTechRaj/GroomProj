@@ -1,0 +1,27 @@
+
+General:
+Set heroku env variables
+  Secret_key_base
+  + other vars 
+  buildpacks - ruby and or js
+
+
+Client:
+   Edit .env REACT_APP_SERVER=true
+   git add -A
+   git commit -m"fixed imaged errors"
+   git push heroku main
+   npm start
+
+ Server:
+  Procfile
+   export SENDGRID_USERNAME="mymotorwash@gmail.com"
+   export SENDGRID_PASSWORD="iddlgmbhlyujsoaj"
+   rails s
+   git status
+   heroku config
+   git add -A
+   git commit -m"fixing image errors"
+   git push heroku appointmentScheduler:master
+   heroku run rake db:migrate
+ 

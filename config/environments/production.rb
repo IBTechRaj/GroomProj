@@ -110,8 +110,9 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+  heroku config:set CLOUDINARY_URL=cloudinary://562145566961783:Ng7gSFRe6DzZWqCuhX-VOv3W-pQ@djjzr6xii
 
-  config.action_mailer.default_url_options = { host: "https://groomwell.herokuapp.com" }
+  config.action_mailer.default_url_options = { host: "https://groomserver.herokuapp.com" }
 
   config.action_mailer.perform_deliveries = true
 config.action_mailer.delivery_method = :smtp
@@ -127,4 +128,4 @@ config.action_mailer.smtp_settings = {
 
 end
 # Rails.application.routes.default_url_options = { host: "http://localhost:3001" }
-Rails.application.routes.default_url_options = { host: "https://groomwell.herokuapp.com" }
+Rails.application.routes.default_url_options = { host: "https://groomserver.herokuapp.com" }

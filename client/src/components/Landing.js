@@ -22,28 +22,28 @@ function Landing(props) {
   // const salonurl = 'http://localhost:3001/salons';
   // const salonurl = 'https://groomserver.herokuapp.com/salons';
 
-  const getSalonData = async () => {
-    try {
-      const response = await axios.get(
-        salonUrl
-      );
-      setSalons(response.data);
-      console.log('respd', response.data)
-    } catch (err) {
-      console.log('e', err.message)
-      setSalons(null);
-    } 
-  }
+  // const getSalonData = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       salonUrl
+  //     );
+  //     setSalons(response.data);
+  //     console.log('respd', response.data)
+  //   } catch (err) {
+  //     console.log('e', err.message)
+  //     setSalons(null);
+  //   } 
+  // }
 
   useEffect(() => {
-    // axios.get(salonUrl,
-    // )
-    //   .then(({ data }) => {
-    //     setSalons(data)
-    //      console.log('cnt', salons.count) 
-    //   })
+    axios.get(salonUrl,
+    )
+      .then(({ data }) => {
+        setSalons(data)
+         console.log('cnt', salons.count) 
+      })
     
-   getSalonData()
+  //  getSalonData()
   }, [])
 
   return (

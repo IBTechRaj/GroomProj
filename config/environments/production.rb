@@ -110,7 +110,8 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-  heroku config:set CLOUDINARY_URL=cloudinary://562145566961783:Ng7gSFRe6DzZWqCuhX-VOv3W-pQ@djjzr6xii
+
+  # heroku config:set CLOUDINARY_URL=cloudinary://562145566961783:Ng7gSFRe6DzZWqCuhX-VOv3W-pQ@djjzr6xii
 
   config.action_mailer.default_url_options = { host: "https://groomserver.herokuapp.com" }
 

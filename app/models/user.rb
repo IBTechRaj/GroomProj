@@ -31,9 +31,10 @@ enum usertype: %i[client sprovider admin]
     super.merge('foo' => 'bar')
   end
 
-  def full_name
-    return "#{first_name} #{last_name}".strip if first_name || last_name
-    'Annonymous'
-  end
+  # def full_name
+  #   return "#{first_name} #{last_name}".strip if first_name || last_name
+  #   'Annonymous'
+  # end
 
+  
 end

@@ -82,6 +82,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %> # for Render
   database: rails_devise_jwt_api_production
   username: rails_devise_jwt_api
   password: <%= ENV['RAILS_DEVISE_JWT_API_DATABASE_PASSWORD'] %>

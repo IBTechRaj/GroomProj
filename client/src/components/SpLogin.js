@@ -66,8 +66,8 @@ function SpLogin(props) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
-  const [firstname, setFirstname] = useState('')
-  const [lastname, setLastname] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [gender, setGender] = useState(0)
   const [mobile, setMobile] = useState('')
   const [dob, setDob] = useState('')
@@ -75,8 +75,8 @@ function SpLogin(props) {
   const signupData = {
     "email": fields.email_address,
     "password": fields.password,
-    "first_name": fields.firstname,
-    "last_name": fields.lastname,
+    "first_name": fields.firstName,
+    "last_name": fields.lastName,
     "gender": fields.gender,
     "mobile": fields.mobile,
     "date_of_birth": fields.dob,
@@ -93,11 +93,11 @@ function SpLogin(props) {
     if (password === passwordConfirmation) {
       const emailData = {
         "subject": 'Service Provider Registration Success!',
-        "name": firstname,
+        "name": firstName,
         "email": email,
         "message":
           "Dear " +
-          firstname +
+          firstName +
           ",\n\n" +
           "Thank you for registering with GroomWell Services. Now you can login and fill the details of your Salon and Services\n"
           + "For any queries please call Customer Care." +
@@ -117,8 +117,8 @@ function SpLogin(props) {
           user: {
             email: fields.email_address,
             password: fields.password,
-            first_name: fields.firstname,
-            last_name: fields.lastname,
+            first_name: fields.firstName,
+            last_name: fields.lastName,
             gender: parseInt(fields.gender),
             mobile: fields.mobile,
             date_of_birth: fields.dob,

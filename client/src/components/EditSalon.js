@@ -102,7 +102,7 @@ export default function EditSalon(props) {
       address2: "required",
       pincode: "required|digits:6",
       city: "required",
-      landline: "",
+      landline: "digits:0,11",
       mobile: "required|digits:10",
       gstin: "required|alpha_num:15",
       pan: "required|alpha_num:10",
@@ -159,7 +159,7 @@ export default function EditSalon(props) {
       .then(res => {
         console.log('upd', res.data)
         alert('Salon Details updated successfully')
-        onclose()
+        // onclose()
       });
 
   }

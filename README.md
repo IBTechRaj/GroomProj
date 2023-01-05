@@ -20,3 +20,4 @@ Sprovider.js spSalonId not working first time
 * Contact is created but POST error . + Email not sent
 
 other gmail account pushed last time. now trying to fix today(Jan 5, 2023)
+changed ~/.gitconfig file with ibtechraj credentials and trying

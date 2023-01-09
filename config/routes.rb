@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  post 'forgot_password', to: 'password_resets#forgot'
+  post 'reset_password', to: 'password_resets#reset'
+
   get 'private/test'
   get '/current_user', to: 'current_user#index'
  devise_for :users, path: '', path_names: {

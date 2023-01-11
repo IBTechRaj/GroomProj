@@ -115,7 +115,7 @@ Rails.application.configure do
 
   # heroku config:set CLOUDINARY_URL=cloudinary://562145566961783:Ng7gSFRe6DzZWqCuhX-VOv3W-pQ@djjzr6xii
 
-  config.action_mailer.default_url_options = { host: "https://groomserver.herokuapp.com" }
+  config.action_mailer.default_url_options = { host: "https://groomwell-backend.onrender.com" }
 
   config.action_mailer.perform_deliveries = true
 config.action_mailer.delivery_method = :smtp
@@ -131,4 +131,4 @@ config.action_mailer.smtp_settings = {
 
 end
 # Rails.application.routes.default_url_options = { host: "http://localhost:3001" }
-Rails.application.routes.default_url_options = { host: "https://groomserver.herokuapp.com" }
+Rails.application.routes.default_url_options = { host: "https://groomwell-backend.onrender.com" }

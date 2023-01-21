@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: self
 
-  has_many :appointments 
-  has_many :salons
+  has_many :appointments, dependent: :destroy 
+  has_many :salons, dependent: :destroy
   # has_one_attached :image
   
 VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze

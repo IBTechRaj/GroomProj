@@ -1,5 +1,5 @@
 class PasswordMailer < ApplicationMailer
-  default :from => 'mymotorwash@gmail.com'
+  default :from => 'support@groomwell.in'
   
   def password_reset(user)
     @user = user

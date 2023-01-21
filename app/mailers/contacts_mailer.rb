@@ -1,5 +1,5 @@
 class ContactsMailer < ApplicationMailer
-  default :from => 'krs30018@gmail.com'
+  default :from => 'support@groomwell.in'
  
   def contact_email(contact)
     @contact = contact

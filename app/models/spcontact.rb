@@ -1,0 +1,2 @@
+class Spcontact < ApplicationRecord
+end

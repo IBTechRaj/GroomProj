@@ -17,11 +17,14 @@ Rails.application.routes.draw do
   # resources :worktimes
   root 'contacts#index'
   resources :contacts
+  resources :spcontacts
   resources :appointments
   get '/utils/:id', to: 'utils#usersalon'
   get 'appointments/:salonId/:aptdate', to: 'appointments#getSalonDateAppts'
   get 'services/:salon_id', to: 'services#getSalonServices'
   resources :services
+  post '/bookingmailers', to: 'bookingmailers#client_mails'
+  post '/spbookingmailers', to: 'spbookingmailers#sp_mails'
   # get '/services/:salonId/getSalonServices', to: 'services#getSalonServices'
 
 end

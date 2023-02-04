@@ -12,13 +12,7 @@ eval `ssh-agent -s`
 ssh-add ~/.ssh/id_ed25519
 ssh-add -l
 
-To do : 5.2.22
-Change fetch calls to axios in frontend# GroomProj
-Sprovider.js spSalonId not working first time
-* Service provider signup and create salon and services : Error with service creation
-* somewhere localhost/3001 error
-* Salon image not uploading? or not fetching?
-* Contact is created but POST error . + Email not sent
+
 
 other gmail account pushed last time. now trying to fix today(Jan 5, 2023)
 changed ~/.gitconfig file with ibtechraj credentials and trying
@@ -58,3 +52,9 @@ views - password_reset folder plus two view files
 routes.rb :
      post 'forgot_password', to: 'password_resets#forgot'
      post 'reset_password', to: 'password_resets#reset'
+
+To do : 2.2.23
+- separate mailers
+- after booking, screen moves up
+- email copies to me
+- 

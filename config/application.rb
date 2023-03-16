@@ -21,7 +21,7 @@ Bundler.require(*Rails.groups)
 
 module RailsDeviseJwtApi
   class Application < Rails::Application
-     config.hosts << "https://groomproj-production.up.railway.app"
+     config.hosts << "groomproj-production.up.railway.app"
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 

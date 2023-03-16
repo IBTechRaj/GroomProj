@@ -1,7 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.hosts = "https://groomproj-production.up.railway.app/"
+  config.hosts << "https://groomproj-production.up.railway.app/"
   # Settings specified here will take precedence over those in config/application.rb.
 config.secret_key_base = ENV["SECRET_KEY_BASE"]
   # Code is not reloaded between requests.
